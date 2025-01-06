@@ -26,11 +26,12 @@ const [showDetail, setShowDetail] = useState(false);
   //Toogle product detail
   const detailpage = (product) => 
     {
-        setDetail([{product}])
+        const detaildata = ([{product}])
+        const productdetail = detaildata[0]['product']
+        // console.log(productdetail)
         setShowDetail(true)
     }
-    console.log(detail)
-  const closeDetail = () => {
+    const closeDetail = () => {
     setShowDetail(false);
   };
 
@@ -42,7 +43,7 @@ const [showDetail, setShowDetail] = useState(false);
             <button className="close_btn" onClick={closeDetail}><AiOutlineClose /></button>
             <div class="container">
                 <div class="img_box">
-                    <img src="" alt=""></img>
+                    <img src={detail.image} alt=""></img>
                 </div>
             </div>
         </div>
