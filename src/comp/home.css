@@ -548,6 +548,9 @@
     .home .banners .container .right_box {
         width: 100%;
     }
+    .home .banners .container .right_box .top img:nth-child(2){
+        display: none;
+    }
     .home .product_type .container {
         flex-direction: column;
     }

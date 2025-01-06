@@ -23,7 +23,7 @@ const Nav = ({search, setSearch, searchproduct}) => {
             </div>
             <div className="mid_header">
                 <div className="logo">
-                    <img src="https://via.placeholder.com/150" alt="Logo" />
+                    <img src="images/ceptalogo.jpeg" alt="Logo" />
                 </div>
                 <div className="search_box">
                     <input type="text" value={search} placeholder="search: e.g laptop" onChange={(e) => setSearch(e.target.value)}></input>

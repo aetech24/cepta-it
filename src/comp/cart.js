@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './cart.css'
 import { Link } from 'react-router-dom'
-import { AiOutlineClose } from 'react-icons/ai'
+import { AiOutlineClose, AiOutlineArrowUp } from 'react-icons/ai'
 const Cart = ({ cart, setCart }) => {
     //Increase Quantity of cart product
     const inqty = (product) => {
@@ -34,6 +34,26 @@ const Cart = ({ cart, setCart }) => {
     }
     //Total price
     const total = cart.reduce((price, item) => price + item.qty * item.price, 0)
+
+    const [showScroll, setShowScroll] = useState(false);
+
+    useEffect(() => {
+        const checkScrollTop = () => {
+            if (!showScroll && window.pageYOffset > 400) {
+                setShowScroll(true);
+            } else if (showScroll && window.pageYOffset <= 400) {
+                setShowScroll(false);
+            }
+        };
+
+        window.addEventListener('scroll', checkScrollTop);
+        return () => window.removeEventListener('scroll', checkScrollTop);
+    }, [showScroll]);
+
+    const scrollTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
     return (
         <>
             <div class="cart">
@@ -88,6 +108,9 @@ const Cart = ({ cart, setCart }) => {
                         </>
                     }
                 </div>
+            </div>
+            <div className="scroll-to-top" onClick={scrollTop} style={{ display: showScroll ? 'flex' : 'none' }}>
+                <AiOutlineArrowUp />
             </div>
         </>
     )

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './home.css'
 import { createRoutesFromElements, Link } from 'react-router-dom';
 import Homeproduct from './home.product'
-import { AiFillEye, AiFillHeart, AiOutlineShoppingCart } from "react-icons/ai";
+import { AiFillEye, AiFillHeart, AiOutlineShoppingCart, AiOutlineArrowUp } from "react-icons/ai";
 import { BiLogoFacebook, BiLogoTwitter, BiLogoInstagram, BiLogoYoutube } from "react-icons/bi";
 
 const Home = ({addtocart}) => {
@@ -48,6 +48,26 @@ const Home = ({addtocart}) => {
     })
     setTopProduct(topcategory)
   }
+
+  const [showScroll, setShowScroll] = useState(false);
+
+  useEffect(() => {
+    const checkScrollTop = () => {
+      if (!showScroll && window.pageYOffset > 400) {
+        setShowScroll(true);
+      } else if (showScroll && window.pageYOffset <= 400) {
+        setShowScroll(false);
+      }
+    };
+
+    window.addEventListener('scroll', checkScrollTop);
+    return () => window.removeEventListener('scroll', checkScrollTop);
+  }, [showScroll]);
+
+  const scrollTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <>
       <div className="home">
@@ -257,6 +277,9 @@ const Home = ({addtocart}) => {
                     }
                     </div>
                   </div>
+        </div>
+        <div className="scroll-to-top" onClick={scrollTop} style={{ display: showScroll ? 'flex' : 'none' }}>
+          <AiOutlineArrowUp />
         </div>
       </div>
       </>

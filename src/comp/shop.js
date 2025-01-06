@@ -1,9 +1,52 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './shop.css'
-import { AiFillHeart, AiFillEye} from "react-icons/ai";
+import { AiFillHeart, AiFillEye, AiOutlineClose, AiOutlineArrowUp } from "react-icons/ai";
 const Shop = ({shop, Filter, allcatefilter, addtocart}) => {
+const [showScroll, setShowScroll] = useState(false);
+const [showDetail, setShowDetail] = useState(false);
+
+  useEffect(() => {
+    const checkScrollTop = () => {
+      if (!showScroll && window.pageYOffset > 400) {
+        setShowScroll(true);
+      } else if (showScroll && window.pageYOffset <= 400) {
+        setShowScroll(false);
+      }
+    };
+
+    window.addEventListener('scroll', checkScrollTop);
+    return () => window.removeEventListener('scroll', checkScrollTop);
+  }, [showScroll]);
+
+  const scrollTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+  //Detail page data
+  const [detail, setDetail] = useState([]);
+  //Toogle product detail
+  const detailpage = (product) => 
+    {
+        setDetail([{product}])
+        setShowDetail(true)
+    }
+    console.log(detail)
+  const closeDetail = () => {
+    setShowDetail(false);
+  };
+
   return (
     <>
+    {
+        showDetail &&
+        <div className='product_detail'>
+            <button className="close_btn" onClick={closeDetail}><AiOutlineClose /></button>
+            <div class="container">
+                <div class="img_box">
+                    <img src="" alt=""></img>
+                </div>
+            </div>
+        </div>
+    }
     <div class="shop">
         <h2># shop</h2>
         <p>Home . shop</p>
@@ -50,7 +93,7 @@ const Shop = ({shop, Filter, allcatefilter, addtocart}) => {
                                             <img src={curElm.image} alt="product_image" />
                                             <div class="icon">
                                             <li><AiFillHeart /></li>
-                                            <li><AiFillEye /></li>
+                                            <li onClick={() => detailpage (curElm)}><AiFillEye /></li>
                                             </div>
                                         </div>
                                         <div class="detail">
@@ -67,6 +110,9 @@ const Shop = ({shop, Filter, allcatefilter, addtocart}) => {
                 </div>
             </div>
         </div>
+    </div>
+    <div className="scroll-to-top" onClick={scrollTop} style={{ display: showScroll ? 'flex' : 'none' }}>
+      <AiOutlineArrowUp />
     </div>
     </>
   )

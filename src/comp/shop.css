@@ -219,7 +219,29 @@
     color: #007bff;
     background: #232323;
 }
-
+.product_detail
+{
+    width: 900px;
+    height: 500px;
+    position: fixed;
+    top: 100px;
+    left: 170px;
+    background: #fff;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border: 1px solid #f6f6f6;
+    border-radius: 5px;
+    padding: 20px 30px;
+}
+.product_detail .close_btn
+{
+    float: right;
+    border: none;
+    outline: none;
+    background: none;
+    color: red;
+    font-size: 22px;
+    cursor: pointer;
+}
 
 
 
