@@ -1,4 +1,7 @@
 import './App.css'
+require('dotenv').config();
+const myVariable = process.env.MY_VARIABLE;
+console.log(`My variable: ${myVariable}`);
 import Nav from './comp/nav'
 import React, { useState } from 'react'
 import {BrowserRouter} from 'react-router-dom'
