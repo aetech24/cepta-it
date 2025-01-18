@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import React from 'react';
+import { AiOutlineHeart, AiOutlineShoppingCart, AiOutlineUser } from 'react-icons/ai';
 
 const Nav = () => {
   return (
@@ -29,6 +29,11 @@ const Nav = () => {
             </Link>
           </div>
           <div><input type="search" name="" id="" placeholder="Search" className="w-[200px] h-[40px] rounded-md p-2 bg-[#E6EAF5] border-none"></input></div>
+          <div className="flex space-x-6">
+            <Link><AiOutlineHeart/></Link>
+            <Link><AiOutlineShoppingCart/></Link>
+            <Link><AiOutlineUser/></Link>
+          </div>
         </div>
     </nav>
   );
