@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { AiOutlineHeart, AiOutlineShoppingCart, AiOutlineUser } from 'react-icons/ai';
+import logo from '../assets/ceptalogo 1.jpg';
 
 const Nav = () => {
   return (
@@ -9,7 +10,7 @@ const Nav = () => {
       </div>
         <div className="container mx-auto flex flex-wrap items-center justify-between w-full h-[88px]">
           <Link to="/" className="text-[#232323] text-xl font-bold">
-            Store Name
+            <img src={logo} alt="logo" className="w-[100px] h-[100px]"/>
           </Link>
           <div className="flex space-x-6">
             <Link to="/" className="text-[#232323] hover:text-blue-400">
@@ -28,11 +29,11 @@ const Nav = () => {
               Cart
             </Link>
           </div>
-          <div><input type="search" name="" id="" placeholder="Search" className="w-[200px] h-[40px] rounded-md p-2 bg-[#E6EAF5] border-none"></input></div>
+          <div><input type="search" name="" id="" placeholder="Search" className="w-[200px] h-[40px] rounded-md p-2 bg-[#E6EAF5] border-none focus:outline-none"></input></div>
           <div className="flex space-x-6">
-            <Link><AiOutlineHeart/></Link>
-            <Link><AiOutlineShoppingCart/></Link>
-            <Link><AiOutlineUser/></Link>
+            <Link className="text-[#232323] hover:text-blue-400"><AiOutlineHeart/></Link>
+            <Link className="text-[#232323] hover:text-blue-400"><AiOutlineShoppingCart/></Link>
+            <Link className="text-[#232323] hover:text-blue-400"><AiOutlineUser/></Link>
           </div>
         </div>
     </nav>
