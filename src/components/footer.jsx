@@ -70,7 +70,7 @@ const Footer = () => {
         </div>
       </div>
       <div className='m-auto text-center p-auto'>
-          <p>&copy; 2024 Your Store. All rights reserved.</p>
+          <p>&copy; 2024 Cepta IT. All rights reserved.</p>
         </div>
     </footer>
 

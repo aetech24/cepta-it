@@ -9,13 +9,13 @@ import logo from '../assets/ceptalogo 1.jpg';
 
 const Nav = () => {
   return (
-    <nav className='w-full'>
+    <nav className='w-full sticky top-0 transition-all duration-300 backdrop-blur-md bg-opacity-90'>
       <div className='w-full bg-[#00278C] p-2 text-center'>
         <p className='text-white'>Free Shipping on Orders Over $1000</p>
       </div>
-      <div className='container mx-auto flex flex-wrap items-center justify-between w-full h-[88px] px-10'>
+      <div className='container mx-auto flex flex-wrap items-center justify-between w-[100%] h-[88px] px-10 sticky top-0 transition-all duration-300 backdrop-blur-md bg-opacity-90'>
         <Link to='/' className='text-[#232323] text-xl font-bold'>
-          <img src={logo} alt='logo' className='w-[100px] h-[100px]' />
+          <img src={logo} alt='logo' className='w-[120px] h-[50px]' />
         </Link>
         <div className='flex space-x-6'>
           <Link to='/' className='text-[#232323] hover:text-blue-400'>

@@ -7,7 +7,7 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import Cart from './pages/Cart'
 import Checkout from './pages/Checkout'
-
+import Layout from './components/Layout'
 function App() {
   return (
     <div className="flex flex-col min-h-screen">
@@ -20,6 +20,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
       </Routes>
+      <Layout></Layout>
       <Footer />
     </div>
   )
