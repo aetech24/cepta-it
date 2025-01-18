@@ -13,7 +13,7 @@ const Nav = () => {
       <div className='w-full bg-[#00278C] p-2 text-center'>
         <p className='text-white'>Free Shipping on Orders Over $1000</p>
       </div>
-      <div className='container mx-auto flex flex-wrap items-center justify-between w-full h-[88px]'>
+      <div className='container mx-auto flex flex-wrap items-center justify-between w-full h-[88px] px-10'>
         <Link to='/' className='text-[#232323] text-xl font-bold'>
           <img src={logo} alt='logo' className='w-[100px] h-[100px]' />
         </Link>
