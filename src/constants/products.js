@@ -1,82 +1,94 @@
+import Speaker from "../assets/bluetooth-speaker.jpg"
+import Camera from "../assets/camera.jpg"
+import Camon from "../assets/Camon DSLR Camera.jpg"
+import Gamepad from "../assets/gamepad.jpg"
+import Headphone from "../assets/headphone-white.jpg"
+import Iphone from "../assets/iphone.jpg"
+import Monitor1 from "../assets/monitor-1.jpg"
+import Monitor from "../assets/monitor.jpg"
+import Ps5 from "../assets/ps5.jpg"
+import Virtual from "../assets/Virtual-Reality.jpg"
+
+
 const products =
 [
     {
         id: 1,
-        Name: "AirPods Pro",
+        Name: "Bluetooth speaker",
         price: '26',
-        image: 'images/AirPods.jpg',
+        image: Speaker,
         cat: 'headphone',
         type: 'featured'
     },
     {
         id: 2,
-        Name: "iPhone X",
+        Name: "Camera",
         price: '200',
-        image: 'images/iPhone X.jpg',
+        image: Camera,
         cat: 'phone',
         type: 'featured'
     },
     {
         id: 3,
-        Name: "Dell Laptop",
+        Name: "Camon DSLR Camera",
         price: '480',
-        image: 'images/Dell.jpg',
-        cat: 'laptop',
+        image: Camon,
+        cat: 'Camera',
         type: 'new'
     },
     {
         id: 4,
         Name: "Hp Laptop",
         price: '510',
-        image: 'images/Hp.jpg',
-        cat: 'laptop',
+        image: Gamepad,
+        cat: 'GamePad',
         type: 'top'
     },
     {
         id: 5,
-        Name: "JBL Bluetooth Speaker",
+        Name: "Headphone",
         price: '55',
-        image: 'images/Speaker.jpg',
-        cat: 'speaker',
+        image: Headphone,
+        cat: 'headphone',
         type: 'featured'
     },
     {
         id: 6,
-        Name: "Apple Smartwatch",
+        Name: "Iphone",
         price: '95',
-        image: 'images/Smartwatch.jpg',
-        cat: 'watch',
+        image: Iphone,
+        cat: 'Iphone',
         type: 'new'
     },
     {
         id: 7,
-        Name: "Mac Desktop",
+        Name: "Monitor",
         price: '2100',
-        image: 'images/Mac Desktop.jpg',
-        cat: 'desktop',
+        image: Monitor1,
+        cat: 'Monitor',
         type: 'top'
     },
     {
         id: 8,
-        Name: "MacBook Air",
+        Name: "Monitor",
         price: '1100',
-        image: 'images/MacBook.JPG',
-        cat: 'laptop',
+        image: Monitor,
+        cat: 'Monitor',
         type: 'top'
     },
     {
         id: 9,
-        Name: "Dell Laptop",
+        Name: "ps5",
         price: '480',
-        image: 'images/Dell.jpg',
-        cat: 'laptop',
+        image: Ps5,
+        cat: "Game",
         type: 'featured'
     },
     {
         id: 10,
-        Name: "JBL Bluetooth Speaker",
+        Name: "Virtual-Reality",
         price: '55',
-        image: 'images/Speaker.jpg',
+        image: Virtual,
         cat: 'speaker',
         type: 'top'
     },
