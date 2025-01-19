@@ -10,19 +10,19 @@ const Footer = () => {
           <div className='flex flex-col space-y-2'>
             <h3 className='text-xl font-bold mb-4'>Your Account</h3>
             <div className='flex flex-col space-y-2'>
-              <Link to='/' className='hover:text-blue-400'>
+              <Link to='/' className='hover:text-blue-400 transition-all duration-300'>
                 My Account
               </Link>
-              <Link to='/' className='hover:text-blue-400'>
+              <Link to='/' className='hover:text-blue-400 transition-all duration-300   '>
                 Login/Register
               </Link>
-              <Link to='/' className='hover:text-blue-400'>
+              <Link to='/' className='hover:text-blue-400 transition-all duration-300   '>
                 Cart
               </Link>
-              <Link to='/shop' className='hover:text-blue-400'>
+              <Link to='/shop' className='hover:text-blue-400 transition-all duration-300       '>
                 Shop
               </Link>
-              <Link to='/checkout' className='hover:text-blue-400'>
+              <Link to='/checkout' className='hover:text-blue-400 transition-all duration-300   '>
                 Payment
               </Link>
             </div>
@@ -30,16 +30,16 @@ const Footer = () => {
           <div>
             <h3 className='text-xl font-bold mb-4'>Products</h3>
             <div className='flex flex-col space-y-2'>
-              <Link to='/' className='hover:text-blue-400'>
+              <Link to='/' className='hover:text-blue-400 transition-all duration-300   '>
                 New Arrivals
               </Link>
-              <Link to='/shop' className='hover:text-blue-400'>
+              <Link to='/shop' className='hover:text-blue-400 transition-all duration-300'>
                 Best Sellers
               </Link>
-              <Link to='/about' className='hover:text-blue-400'>
+              <Link to='/about' className='hover:text-blue-400 transition-all duration-300'>
                 Delivery
               </Link>
-              <Link to='/contact' className='hover:text-blue-400'>
+              <Link to='/contact' className='hover:text-blue-400 transition-all duration-300'>
                 Track Order
               </Link>
             </div>
@@ -47,16 +47,16 @@ const Footer = () => {
           <div>
             <h3 className='text-xl font-bold mb-4'>Quick Links</h3>
             <div className='flex flex-col space-y-2'>
-              <Link to='/' className='hover:text-blue-400'>
+              <Link to='/' className='hover:text-blue-400 transition-all duration-300'>
                 Privacy Policy
               </Link>
-              <Link to='/shop' className='hover:text-blue-400'>
+              <Link to='/shop' className='hover:text-blue-400 transition-all duration-300'>
                 Terms of Service
               </Link>
-              <Link to='/about' className='hover:text-blue-400'>
+              <Link to='/about' className='hover:text-blue-400 transition-all duration-300'>
                 FAQ
               </Link>
-              <Link to='/contact' className='hover:text-blue-400'>
+              <Link to='/contact' className='hover:text-blue-400 transition-all duration-300'>
                 Contact Us
               </Link>
             </div>
