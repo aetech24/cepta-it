@@ -1,13 +1,13 @@
-import Speaker from "../assets/bluetooth-speaker.jpg"
-import Camera from "../assets/camera.jpg"
-import Camon from "../assets/Camon DSLR Camera.jpg"
-import Gamepad from "../assets/gamepad.jpg"
-import Headphone from "../assets/headphone-white.jpg"
-import Iphone from "../assets/iphone.jpg"
-import Monitor1 from "../assets/monitor-1.jpg"
-import Monitor from "../assets/monitor.jpg"
-import Ps5 from "../assets/ps5.jpg"
-import Virtual from "../assets/Virtual-Reality.jpg"
+import Speaker from "../assets/bluetoothspeakers.png"
+import Camera from "../assets/camera.png"
+import Camon from "../assets/Camon DSLR Camera.png"
+import Gamepad from "../assets/gamepad.png"
+import Headphone from "../assets/headphone-white.png"
+import Iphone from "../assets/iphone.png"
+import Monitor1 from "../assets/monitor.png"
+import Monitor from "../assets/monitor.png"
+import Ps5 from "../assets/ps5.png"
+import Virtual from "../assets/Virtual-Reality.png"
 
 
 const products =
@@ -38,7 +38,7 @@ const products =
     },
     {
         id: 4,
-        Name: "Hp Laptop",
+        Name: "Gamepad",
         price: '510',
         image: Gamepad,
         cat: 'GamePad',
@@ -92,22 +92,22 @@ const products =
         cat: 'speaker',
         type: 'top'
     },
-    {
-        id: 11,
-        Name: "Hp Laptop",
-        price: '510',
-        image: 'images/Hp.jpg',
-        cat: 'laptop',
-        type: 'new'
-    },
-    {
-        id: 12,
-        Name: "AirPods Pro",
-        price: '26',
-        image: 'images/AirPods.jpg',
-        cat: 'headphone',
-        type: 'featured'
-    },
+    // {
+    //     id: 11,
+    //     Name: "Hp Laptop",
+    //     price: '510',
+    //     image: 'images/Hp.png',
+    //     cat: 'laptop',
+    //     type: 'new'
+    // },
+    // {
+    //     id: 12,
+    //     Name: "AirPods Pro",
+    //     price: '26',
+    //     image: 'images/AirPods.jpg',
+    //     cat: 'headphone',
+    //     type: 'featured'
+    // },
 
 
 

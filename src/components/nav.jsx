@@ -9,7 +9,7 @@ import logo from '../assets/ceptalogo 1.jpg';
 
 const Nav = () => {
   return (
-    <nav className='w-full sticky top-0 transition-all duration-300 backdrop-blur-md bg-opacity-90 z-50'>
+    <nav className='w-full sticky top-0 transition-all duration-300 backdrop-blur-md bg-opacity-90 z-50 drop-shadow-xl'>
       <div className='w-full bg-[#00278C] p-2 text-center'>
         <p className='text-white'>Free Shipping on Orders Over $1000</p>
       </div>

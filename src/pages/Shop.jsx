@@ -1,14 +1,19 @@
-import React, { useState } from "react";
-import { FaHeart, FaShoppingCart } from "react-icons/fa"; 
-import { Swiper, SwiperSlide } from "swiper/react"; 
-import "swiper/css"; 
-import products from "/src/constants/products";
+import React, { useState } from 'react';
+import { FaHeart, FaShoppingCart } from 'react-icons/fa';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import products from '/src/constants/products';
+import {
+  IoIosArrowRoundForward,
+  IoIosArrowRoundBack,
+  IoIosArrowForward,
+} from 'react-icons/io';
 
 const Shop = () => {
-  const [brandFilter, setBrandFilter] = useState("");
-  const [priceFilter, setPriceFilter] = useState("");
+  const [brandFilter, setBrandFilter] = useState('');
+  const [priceFilter, setPriceFilter] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [category, setCategory] = useState(""); // Category filter
+  const [category, setCategory] = useState(''); // Category filter
   const itemsPerPage = 6;
 
   // Filter products based on brand, price, and category
@@ -18,9 +23,9 @@ const Shop = () => {
         ? product.Name.toLowerCase().includes(brandFilter.toLowerCase())
         : true;
       const matchPrice =
-        priceFilter === "under150"
+        priceFilter === 'under150'
           ? product.price <= 150
-          : priceFilter === "150to500"
+          : priceFilter === '150to500'
           ? product.price > 150 && product.price <= 500
           : true;
       const matchCategory = category ? product.category === category : true;
@@ -38,172 +43,191 @@ const Shop = () => {
   const totalPages = Math.ceil(filterProducts().length / itemsPerPage);
 
   return (
-    <div className="flex flex-col lg:flex-row">
-      {/* Sidebar */}
-      <aside className="w-full lg:w-1/4 p-4 bg-gray-100">
-        <h2 className="font-bold text-lg mb-4">Filter</h2>
-        <div className="mb-6">
-          <h3 className="font-medium mb-2">Brand</h3>
-          <div>
-            <label className="flex items-center mb-2">
-              <input
-                type="radio"
-                name="brand"
-                value="Dell"
-                className="mr-2"
-                onChange={(e) => setBrandFilter(e.target.value)}
-              />
-              Dell
-            </label>
-            <label className="flex items-center mb-2">
-              <input
-                type="radio"
-                name="brand"
-                value="Samsung"
-                className="mr-2"
-                onChange={(e) => setBrandFilter(e.target.value)}
-              />
-              Samsung
-            </label>
-            <label className="flex items-center mb-2">
-              <input
-                type="radio"
-                name="brand"
-                value="HP"
-                className="mr-2"
-                onChange={(e) => setBrandFilter(e.target.value)}
-              />
-              HP
-            </label>
-            <label className="flex items-center mb-2">
-              <input
-                type="radio"
-                name="brand"
-                value=""
-                className="mr-2"
-                onChange={() => setBrandFilter("")}
-              />
-              All Brands
-            </label>
-          </div>
-        </div>
-        <div className="mb-6">
-          <h3 className="font-medium mb-2">Pricing</h3>
-          <div>
-            <label className="flex items-center mb-2">
-              <input
-                type="radio"
-                name="price"
-                value="under150"
-                className="mr-2"
-                onChange={(e) => setPriceFilter(e.target.value)}
-              />
-              Under $150
-            </label>
-            <label className="flex items-center mb-2">
-              <input
-                type="radio"
-                name="price"
-                value="150to500"
-                className="mr-2"
-                onChange={(e) => setPriceFilter(e.target.value)}
-              />
-              $150 to $500
-            </label>
-            <label className="flex items-center mb-2">
-              <input
-                type="radio"
-                name="price"
-                value=""
-                className="mr-2"
-                onChange={() => setPriceFilter("")}
-              />
-              All Prices
-            </label>
-          </div>
-        </div>
-      </aside>
+    <main className='min-h-screen py-8 w-full px-10'>
+      <div className='flex flex-row items-center gap-2 mb-10'>
+        <p className='text-black text-sm'>Home</p>
+        <IoIosArrowForward className='text-black text-sm' />
+        <p className='text-[#EF0303] text-sm'>Shop</p>
+      </div>
 
-      {/* Main Content */}
-      <main className="w-full lg:w-3/4 p-4">
-        <div className="flex justify-between items-center mb-4">
-          <div className="flex gap-4">
-            <select
-              className="border p-2 rounded"
-              onChange={(e) => setCategory(e.target.value)}
-            >
-              <option value="">Categories</option>
-              <option value="Electronics">Electronics</option>
-              <option value="Fashion">Fashion</option>
-              <option value="Home">Home</option>
-            </select>
-            <select
-              className="border p-2 rounded"
-              onChange={(e) => console.log("Sorting not implemented yet")}
-            >
-              <option value="best-match">Best Matches</option>
-              <option value="price-low-high">Price: Low to High</option>
-              <option value="price-high-low">Price: High to Low</option>
-            </select>
-          </div>
-          <p className="text-gray-500">
-            Showing {paginatedProducts.length} of {filterProducts().length}
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {paginatedProducts.map((product) => (
-            <div
-              key={product.id}
-              className="border rounded shadow-sm hover:shadow-lg transition relative"
-            >
-              <div className="relative h-56 overflow-hidden rounded-t bg-gray-100">
-                <img
-                  src={product.image}
-                  alt={product.Name}
-                  className="w-full h-full object-contain bg-white p-4"
+      <div className='flex flex-col lg:flex-row'>
+        {/* Sidebar */}
+        <aside className='w-full lg:w-1/4 p-4 bg-white'>
+          <h2 className='text-black text-2xl font-[400] text-start relative mb-6'>
+            Filter
+            <span className='block h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-[22%] absolute top-full left-0 mt-1 font-[2px] drop-shadow-xl'></span>
+          </h2>
+          <div className='mb-6'>
+            <h3 className='font-medium mb-2 text-[#1b2b41]'>Brand</h3>
+            <div>
+              <label className='flex items-center mb-2'>
+                <input
+                  type='radio'
+                  name='brand'
+                  value='Dell'
+                  className='mr-2 border-none bg-[#1c375a] w-[18px] h-[18px] rounded-full outline-none'
+                  onChange={(e) => setBrandFilter(e.target.value)}
                 />
-              </div>
-              <div className="absolute top-2 right-2 flex flex-col gap-2">
-                <button className="p-2 bg-transparent rounded-full shadow hover:shadow-md hover:text-red-500 transition">
-                  <FaHeart className="text-lg text-gray-500" />
-                </button>
-                <button className="p-2 bg-transparent rounded-full shadow hover:shadow-md hover:text-green-500 transition">
-                  <FaShoppingCart className="text-lg text-gray-500" />
-                </button>
-              </div>
-              <div className="p-4">
-                <h3 className="font-bold text-lg truncate">{product.Name}</h3>
-                <p className="text-red-500 font-semibold">${product.price}</p>
-                <div className="flex items-center mt-2">
-                  <span className="text-yellow-500 text-sm">★★★★★</span>
-                  <span className="ml-2 text-gray-400 text-sm">(88)</span>
-                </div>
+                Dell
+              </label>
+              <label className='flex items-center mb-2'>
+                <input
+                  type='radio'
+                  name='brand'
+                  value='Samsung'
+                  className='mr-2 border-none bg-[#1c375a] w-[18px] h-[18px] rounded-full outline-none'
+                  onChange={(e) => setBrandFilter(e.target.value)}
+                />
+                Samsung
+              </label>
+              <label className='flex items-center mb-2'>
+                <input
+                  type='radio'
+                  name='brand'
+                  value='HP'
+                  className='mr-2 border-none bg-[#1c375a] w-[18px] h-[18px] rounded-full outline-none'
+                  onChange={(e) => setBrandFilter(e.target.value)}
+                />
+                HP
+              </label>
+              <label className='flex items-center mb-2'>
+                <input
+                  type='radio'
+                  name='brand'
+                  value=''
+                  className='mr-2 border-none bg-[#1c375a] w-[18px] h-[18px] rounded-full outline-none'
+                  onChange={() => setBrandFilter('')}
+                />
+                All Brands
+              </label>
+            </div>
+          </div>
+          <span className='block h-[2px] bg-[#E6EAF5] hover:bg-[#00278C] transition-all duration-300 w-[50%] mb-2 font-[2px] drop-shadow-xl'></span>
+          <div className='mb-6 mt-4'>
+            <h3 className='font-medium mb-2 text-[#1b2b41]'>Pricing</h3>
+            <div>
+              <label className='flex items-center mb-2'>
+                <input
+                  type='radio'
+                  name='price'
+                  value='under150'
+                  className='mr-2 border-none bg-[#1c375a] w-[18px] h-[18px] rounded-full outline-none'
+                  onChange={(e) => setPriceFilter(e.target.value)}
+                />
+                Under $150
+              </label>
+              <label className='flex items-center mb-2'>
+                <input
+                  type='radio'
+                  name='price'
+                  value='150to500'
+                  className='mr-2 border-none bg-[#1c375a] w-[18px] h-[18px] rounded-full outline-none'
+                  onChange={(e) => setPriceFilter(e.target.value)}
+                />
+                $150 to $500
+              </label>
+              <label className='flex items-center mb-2'>
+                <input
+                  type='radio'
+                  name='price'
+                  value=''
+                  className='mr-2 border-none bg-[#1c375a] w-[18px] h-[18px] rounded-full outline-none'
+                  onChange={() => setPriceFilter('')}
+                />
+                All Prices
+              </label>
+            </div>
+          </div>
+        </aside>
+
+        {/* Main Content */}
+        <main className='w-full lg:w-3/4 p-4'>
+          <div className='flex justify-between items-center mb-4'>
+            <div className='flex gap-4'>
+              <select
+                className='border p-2 rounded'
+                onChange={(e) => setCategory(e.target.value)}
+              >
+                <option value=''>Categories</option>
+                <option value='Electronics'>Electronics</option>
+                <option value='Fashion'>Fashion</option>
+                <option value='Home'>Home</option>
+              </select>
+              <div className='flex items-center gap-2'>
+                <p className='text-gray-500'>Sort by</p>
+                <select
+                  className='border p-2 rounded'
+                  onChange={(e) => console.log('Sorting not implemented yet')}
+                >
+                  <option value='best-match'>Best Matches</option>
+                  <option value='price-low-high'>Price: Low to High</option>
+                  <option value='price-high-low'>Price: High to Low</option>
+                </select>
               </div>
             </div>
-          ))}
-        </div>
-        {/* Pagination */}
-        <div className="flex justify-center mt-6 gap-4">
-          <button
-            className="px-4 py-2 border rounded hover:bg-gray-200"
-            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-            disabled={currentPage === 1}
-          >
-            Prev
-          </button>
-          <button
-            className="px-4 py-2 border rounded hover:bg-gray-200"
-            onClick={() =>
-              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-            }
-            disabled={currentPage === totalPages}
-          >
-            Next
-          </button>
-        </div>
-      </main>
-    </div>
+            <div className='flex items-center gap-2'>
+              <p className='text-gray-500'>
+                Showing {paginatedProducts.length} of {filterProducts().length}
+              </p>
+              {/* Pagination */}
+              <div className='flex justify-center gap-4'>
+                <button
+                  className='px-4 py-2 bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 text-white w-[65px] h-[45px] flex items-center justify-center'
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.max(prev - 1, 1))
+                  }
+                  disabled={currentPage === 1}
+                >
+                  <IoIosArrowRoundBack className='w-[18px] h-[15px]' />
+                </button>
+                <button
+                  className='px-4 py-2 bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 text-white w-[65px] h-[45px] flex items-center justify-center'
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                  }
+                  disabled={currentPage === totalPages}
+                >
+                  <IoIosArrowRoundForward className='w-[18px] h-[15px]' />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 '>
+            {paginatedProducts.map((product) => (
+              <div
+                key={product.id}
+                className='rounded shadow-sm hover:shadow-lg transition relative bg-[#FAFAFA] w-[295px]'
+              >
+                <div className='relative h-56 overflow-hidden rounded-t bg-gray-100'>
+                  <img
+                    src={product.image}
+                    alt={product.Name}
+                    className='w-full h-full object-contain bg-[#E6EAF5] p-4'
+                  />
+                </div>
+                <div className='absolute top-2 right-2 flex flex-col gap-2'>
+                  <button className='p-2 bg-transparent rounded-full shadow hover:shadow-md hover:text-[#EF0303] transition'>
+                    <FaHeart className='text-lg text-[#00278c] hover:text-[#EF0303] transition duration-300' />
+                  </button>
+                  <button className='p-2 bg-transparent rounded-full shadow hover:shadow-md hover:text-[#00278c] transition duration-300'>
+                    <FaShoppingCart className='text-lg text-[#00278c] hover:text-[#EF0303] transition duration-300' />
+                  </button>
+                </div>
+                <div className='p-4'>
+                  <h3 className='font-bold text-lg truncate'>{product.Name}</h3>
+                  <p className='text-red-500 font-semibold'>${product.price}</p>
+                  <div className='flex items-center mt-2'>
+                    <span className='text-yellow-500 text-sm'>★★★★★</span>
+                    <span className='ml-2 text-gray-400 text-sm'>(88)</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </main>
+      </div>
+    </main>
   );
 };
 
