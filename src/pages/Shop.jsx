@@ -8,6 +8,7 @@ import {
   IoIosArrowRoundBack,
   IoIosArrowForward,
 } from 'react-icons/io';
+import { GiSettingsKnobs } from 'react-icons/gi';
 
 const Shop = () => {
   const [brandFilter, setBrandFilter] = useState('');
@@ -143,21 +144,24 @@ const Shop = () => {
         {/* Main Content */}
         <main className='w-full lg:w-3/4 p-4'>
           <div className='flex justify-between items-center mb-4'>
-            <div className='flex gap-4'>
-              <select
-                className='border p-2 rounded'
-                onChange={(e) => setCategory(e.target.value)}
-              >
-                <option value=''>Categories</option>
-                <option value='Electronics'>Electronics</option>
-                <option value='Fashion'>Fashion</option>
-                <option value='Home'>Home</option>
-              </select>
+            <div className='flex gap-6'>
+              <div className='flex items-center border p-2  gap-2'>
+                <GiSettingsKnobs className='text-black text-sm rotate-90' />
+                <select
+                  className='rounded'
+                  onChange={(e) => setCategory(e.target.value)}
+                >
+                  <option value=''>Categories</option>
+                  <option value='Electronics'>Electronics</option>
+                  <option value='Fashion'>Fashion</option>
+                  <option value='Home'>Home</option>
+                </select>
+              </div>
               <div className='flex items-center gap-2'>
                 <p className='text-gray-500'>Sort by</p>
                 <select
-                  className='border p-2 rounded'
-                  onChange={(e) => console.log('Sorting not implemented yet')}
+                  className='border p-2 items-center'
+                  onChange={() => console.log('Sorting not implemented yet')}
                 >
                   <option value='best-match'>Best Matches</option>
                   <option value='price-low-high'>Price: Low to High</option>
