@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { FaHeart, FaShoppingCart } from 'react-icons/fa';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import products from '/src/constants/products';
 import {
@@ -9,6 +8,7 @@ import {
   IoIosArrowForward,
 } from 'react-icons/io';
 import { GiSettingsKnobs } from 'react-icons/gi';
+import ProductGrid from '../components/ProductGrid';
 
 const Shop = () => {
   const [brandFilter, setBrandFilter] = useState('');
@@ -44,11 +44,11 @@ const Shop = () => {
   const totalPages = Math.ceil(filterProducts().length / itemsPerPage);
 
   return (
-    <main className='min-h-screen py-8 w-full px-10'>
-      <div className='flex flex-row items-center gap-2 mb-10'>
-        <p className='text-black text-sm'>Home</p>
-        <IoIosArrowForward className='text-black text-sm' />
-        <p className='text-[#EF0303] text-sm'>Shop</p>
+    <main className="min-h-screen py-8 w-full px-10">
+      <div className="flex flex-row items-center gap-2 mb-10">
+        <p className="text-black text-sm">Home</p>
+        <IoIosArrowForward className="text-black text-sm" />
+        <p className="text-[#EF0303] text-sm">Shop</p>
       </div>
 
       <div className='flex flex-col lg:flex-row'>
@@ -140,9 +140,9 @@ const Shop = () => {
             </div>
           </div>
         </aside>
-
-        {/* Main Content */}
-        <main className='w-full lg:w-3/4 p-4'>
+      
+       {/* Main Content */}
+       <main className='w-full lg:w-3/4 p-4'>
           <div className='flex justify-between items-center mb-4'>
             <div className='flex gap-6'>
               <div className='flex items-center border p-2  gap-2'>
@@ -197,38 +197,8 @@ const Shop = () => {
             </div>
           </div>
 
-          <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 '>
-            {paginatedProducts.map((product) => (
-              <div
-                key={product.id}
-                className='rounded shadow-sm hover:shadow-lg transition relative bg-[#FAFAFA] w-[295px]'
-              >
-                <div className='relative h-56 overflow-hidden rounded-t bg-gray-100'>
-                  <img
-                    src={product.image}
-                    alt={product.Name}
-                    className='w-full h-full object-contain bg-[#E6EAF5] p-4'
-                  />
-                </div>
-                <div className='absolute top-2 right-2 flex flex-col gap-2'>
-                  <button className='p-2 bg-transparent rounded-full shadow hover:shadow-md hover:text-[#EF0303] transition'>
-                    <FaHeart className='text-lg text-[#00278c] hover:text-[#EF0303] transition duration-300' />
-                  </button>
-                  <button className='p-2 bg-transparent rounded-full shadow hover:shadow-md hover:text-[#00278c] transition duration-300'>
-                    <FaShoppingCart className='text-lg text-[#00278c] hover:text-[#EF0303] transition duration-300' />
-                  </button>
-                </div>
-                <div className='p-4'>
-                  <h3 className='font-bold text-lg truncate'>{product.Name}</h3>
-                  <p className='text-red-500 font-semibold'>${product.price}</p>
-                  <div className='flex items-center mt-2'>
-                    <span className='text-yellow-500 text-sm'>★★★★★</span>
-                    <span className='ml-2 text-gray-400 text-sm'>(88)</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          {/* Product Grid */}
+          <ProductGrid products={paginatedProducts} />
         </main>
       </div>
     </main>
