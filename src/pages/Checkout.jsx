@@ -158,7 +158,7 @@ const Checkout = () => {
                 <span>Total</span>
                 <span>${3600.00}</span>
               </div>
-              <button className="w-full bg-red-600 text-white font-semibold py-3 rounded-md bg-[#EF0303] transition">
+              <button className="w-full bg-[#EF0303] text-white font-semibold py-3 hover:bg-[#00278C] transition">
                 Pay ${3600.00}
               </button>
             </div>
