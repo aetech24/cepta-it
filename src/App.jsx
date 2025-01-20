@@ -10,7 +10,7 @@ import Checkout from './pages/Checkout'
 import Layout from './components/Layout'
 function App() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen w-[100%]">
       <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
