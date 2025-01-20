@@ -8,7 +8,7 @@ const Checkout = () => {
     <div className="max-w-6xl mx-auto p-4 sm:p-6 space-y-8">
       {/* Breadcrumb */}
       <div className="text-sm text-gray-500">
-        <span>Home &gt; Categories &gt; Headset &gt; Cart &gt; </span>
+        <span>Home &gt; Shop &gt; Cart &gt; </span>
         <span className="text-red-600 font-medium">Checkout</span>
       </div>
 
@@ -16,7 +16,7 @@ const Checkout = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Products Section */}
         <div className="space-y-6">
-          <div>
+          <div className="flex flex-col justify-center items-start w-[70%] gap-4">
             <h2 className="text-lg font-semibold relative pb-2">
               Your Products
               <span className="absolute left-0 bottom-0 w-10 h-1 bg-red-600 rounded"></span>
@@ -26,7 +26,7 @@ const Checkout = () => {
             </p>
           </div>
 
-          <div className="bg-white border border-gray-300 rounded-lg p-4 sm:p-6">
+          <div className="bg-white border-gray-300 p-4 sm:p-6">
             {/* Product List */}
             <div className="space-y-4">
               {[
@@ -65,7 +65,7 @@ const Checkout = () => {
                     </p>
                   </div>
                   <p className="font-medium text-gray-800 mt-2 sm:mt-0">
-                    GH₵{product.price.toFixed(2)}
+                    ${product.price.toFixed(2)}
                   </p>
                 </div>
               ))}
@@ -74,42 +74,42 @@ const Checkout = () => {
             {/* Payment Method */}
             <div className="space-y-2 pt-6">
               <h3 className="text-md font-semibold">Payment Method</h3>
+              <div className="flex flex-row col-span-2 gap-4 justify-between pr-[40%]">
               <div className="space-y-2">
                 <label className="flex items-center">
                   <input type="radio" name="payment-method" className="mr-2" />
-                  Bank
-                </label>
-                <label className="flex items-center">
-                  <input type="radio" name="payment-method" className="mr-2" />
-                  <img
-                    src="./src/assets/visa.png"
-                    alt="Visa"
-                    className="h-4 w-auto inline mr-2"
-                  />
-                  Visa/Mastercard
+                  Card
                 </label>
                 <label className="flex items-center">
                   <input type="radio" name="payment-method" className="mr-2" />
                   Cash on delivery
                 </label>
               </div>
+              <div className="flex flex-col items-start h-[28px]">
+                  <img
+                    src="./src/assets/visa.png"
+                    alt="Visa"
+                    className="h-[full] w-[42px] inline mr-2 "
+                  />
+                </div>
+                </div>
             </div>
           </div>
         </div>
 
         {/* Payment Details Section */}
         <div className="space-y-6">
-          <div>
+          <div className="flex flex-col justify-center items-start w-[70%] gap-4">
             <h2 className="text-lg font-semibold relative pb-2">
               Payment Details
-              <span className="absolute left-0 bottom-0 w-10 h-1 bg-red-600 rounded"></span>
+              <span className="absolute left-0 bottom-0 w-10 h-1 bg-[#EF0303] outline-none"></span>
             </h2>
             <p className="text-sm text-gray-600">
               Complete your payment by providing your payment details.
             </p>
           </div>
 
-          <div className="bg-white border border-gray-300 rounded-lg p-4 sm:p-6">
+          <div className="bg-white border-gray-300 p-4 sm:p-6">
             {/* Payment Form */}
             <form className="space-y-4">
               <div>
@@ -118,7 +118,7 @@ const Checkout = () => {
                 </label>
                 <input
                   type="email"
-                  className="w-full border border-gray-300 rounded-md p-2"
+                  className="w-full border border-gray-300 outline-none p-2"
                   placeholder="Enter your email"
                 />
               </div>
@@ -128,7 +128,7 @@ const Checkout = () => {
                 </label>
                 <input
                   type="text"
-                  className="w-full border border-gray-300 rounded-md p-2"
+                  className="w-full border border-gray-300 outline-none p-2"
                   placeholder="Enter your card details"
                 />
               </div>
@@ -138,7 +138,7 @@ const Checkout = () => {
                 </label>
                 <input
                   type="text"
-                  className="w-full border border-gray-300 rounded-md p-2"
+                  className="w-full border border-gray-300 outline-none p-2"
                   placeholder="Enter cardholder's name"
                 />
               </div>
@@ -148,7 +148,7 @@ const Checkout = () => {
             <div className="space-y-4 border-t border-gray-200 pt-4">
               <div className="flex justify-between items-center">
                 <span className="text-gray-700">Subtotal</span>
-                <span className="font-medium">GH₵3600.00</span>
+                <span className="font-medium">${3600.00}</span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-gray-700">Shipping Fee</span>
@@ -156,10 +156,10 @@ const Checkout = () => {
               </div>
               <div className="flex justify-between items-center text-lg font-semibold border-t border-gray-200 pt-4">
                 <span>Total</span>
-                <span>GH₵3600.00</span>
+                <span>${3600.00}</span>
               </div>
               <button className="w-full bg-red-600 text-white font-semibold py-3 rounded-md hover:bg-red-700 transition">
-                Pay GH₵3600.00
+                Pay ${3600.00}
               </button>
             </div>
           </div>

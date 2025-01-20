@@ -46,7 +46,7 @@ const Nav = () => {
           <Link className='text-[#232323] hover:text-blue-400 text-2xl transition-all duration-300  '>
             <AiOutlineShoppingCart />
           </Link>
-          <Link className='text-[#232323] hover:text-blue-400 text-2xl transition-all duration-300  '>
+          <Link to='/checkout' className='text-[#232323] hover:text-blue-400 text-2xl transition-all duration-300  '>
             <AiOutlineUser />
           </Link>
         </div>
