@@ -158,22 +158,33 @@ const products =
     },
 
 
-    // {
-    //     id: 11,
-    //     Name: "Hp Laptop",
-    //     price: '510',
-    //     image: 'images/Hp.png',
-    //     cat: 'laptop',
-    //     type: 'new'
-    // },
-    // {
-    //     id: 12,
-    //     Name: "AirPods Pro",
-    //     price: '26',
-    //     image: 'images/AirPods.jpg',
-    //     cat: 'headphone',
-    //     type: 'featured'
-    // },
+    {
+        id: 17,
+        Name: "Headphone",
+        price: '55',
+        image: Headphone,
+        cat: 'headphone',
+        type: 'top-selling',
+        description: 'Wireless over-ear headphones with active noise cancellation, 30-hour battery life, and premium audio quality. Features comfortable memory foam ear cushions.'
+    },
+    {
+        id: 18,
+        Name: "Virtual-Reality",
+        price: '55',
+        image: Virtual,
+        cat: 'speaker',
+        type: 'top-selling',
+        description: 'Advanced VR headset with high-resolution displays, precise motion tracking, and immersive 3D audio. Perfect for gaming and virtual experiences.'
+    },
+    {
+        id: 19,
+        Name: "Bluetooth speaker",
+        price: '26',
+        image: Speaker,
+        cat: 'headphone',
+        type: 'top-selling',
+        description: 'Portable wireless speaker with rich stereo sound, 12-hour battery life, and water-resistant design. Perfect for outdoor activities and home entertainment.'
+    },
 
 
 
