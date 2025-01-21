@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 
 const ProductGrid = ({ products }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-14 pt-10">
+    <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-8 px-4 pt-10 mx-auto max-w-[100%]">
       {products.map((product) => (
         <div
           key={product.id}
-          className="relative rounded shadow-sm hover:shadow-lg bg-[#FAFAFA] w-[295px]"
+          className="relative rounded shadow-sm hover:shadow-lg bg-[#FAFAFA] w-[295px] h-[354px]"
         >
-          <div className="relative h-56 overflow-hidden rounded-t bg-gray-100">
+          <div className="relative h-[250px] overflow-hidden rounded-t bg-gray-100">
             <img
               src={product.image}
               alt={product.Name}
