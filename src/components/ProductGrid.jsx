@@ -1,9 +1,10 @@
 import React from 'react';
 import { FaHeart, FaShoppingCart } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 
 const ProductGrid = ({ products }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-14 pt-10">
       {products.map((product) => (
         <div
           key={product.id}
@@ -36,6 +37,17 @@ const ProductGrid = ({ products }) => {
       ))}
     </div>
   );
+};
+
+ProductGrid.propTypes = {
+  products: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      Name: PropTypes.string.isRequired,
+      price: PropTypes.string.isRequired,
+      image: PropTypes.any.isRequired,
+    })
+  ).isRequired,
 };
 
 export default ProductGrid;

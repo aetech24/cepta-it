@@ -45,7 +45,7 @@ const products =
         price: '510',
         image: Gamepad,
         cat: 'GamePad',
-            type: 'top',
+        type: 'top',
         description: 'Premium wireless gaming controller with customizable buttons, haptic feedback, and ergonomic design. Compatible with multiple gaming platforms.'
     },
     {
@@ -102,6 +102,62 @@ const products =
         type: 'top',
         description: 'Advanced VR headset with high-resolution displays, precise motion tracking, and immersive 3D audio. Perfect for gaming and virtual experiences.'
     },
+    {
+        id: 11,
+        Name: "Monitor",
+        price: '2100',
+        image: Monitor1,
+        cat: 'Monitor',
+        type: 'trending',
+        description: '32-inch 4K UHD professional monitor with HDR support, 99% Adobe RGB color coverage, and USB-C connectivity. Perfect for content creators and designers.'
+    },
+    {
+        id: 12,
+        Name: "Iphone",
+        price: '1100',
+        image: Iphone,
+        cat: 'Iphone',
+        type: 'trending',
+        description: 'Latest iPhone model featuring A16 Bionic chip, ProMotion display, advanced camera system with 48MP main sensor, and all-day battery life.'
+    },
+    {
+        id: 13,
+        Name: "Headphone",
+        price: '55',
+        image: Headphone,
+        cat: 'headphone',
+        type: 'trending',
+        description: 'Wireless over-ear headphones with active noise cancellation, 30-hour battery life, and premium audio quality. Features comfortable memory foam ear cushions.'
+    },
+    {
+        id: 14,
+        Name: "Virtual-Reality",
+        price: '55',
+        image: Virtual,
+        cat: 'speaker',
+        type: 'trending',
+        description: 'Advanced VR headset with high-resolution displays, precise motion tracking, and immersive 3D audio. Perfect for gaming and virtual experiences.'
+    },
+    {
+        id: 15,
+        Name: "Bluetooth speaker",
+        price: '26',
+        image: Speaker,
+        cat: 'headphone',
+        type: 'new',
+        description: 'Portable wireless speaker with rich stereo sound, 12-hour battery life, and water-resistant design. Perfect for outdoor activities and home entertainment.'
+    },
+    {
+        id: 16,
+        Name: "Camera",
+        price: '200',
+        image: Camera,
+        cat: 'phone',
+        type: 'new',
+        description: 'High-resolution digital camera with 24MP sensor, 4K video recording, and advanced autofocus system. Ideal for both photography enthusiasts and professionals.'
+    },
+
+
     // {
     //     id: 11,
     //     Name: "Hp Laptop",

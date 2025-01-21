@@ -44,9 +44,9 @@ const Shop = () => {
   // Handle pagination
   const totalPages = Math.ceil(filterProducts().length / itemsPerPage);
 
-  const handleViewProduct = (productId) => {
-    navigate(`/product/${productId}`);
-  };
+  // const handleViewProduct = (productId) => {
+  //   navigate(`/product/${productId}`);
+  // };
 
   return (
     <main className='min-h-screen py-8 w-full px-10'>
