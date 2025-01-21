@@ -6,6 +6,8 @@ import {
   AiOutlineSearch,
 } from 'react-icons/ai';
 import logo from '../assets/ceptalogo 1.jpg';
+import { ClerkProvider, SignedIn, SignedOut, UserButton, SignInButton } from '@clerk/clerk-react'
+
 
 const Nav = () => {
   return (
@@ -46,9 +48,40 @@ const Nav = () => {
           <Link to='/cart' className='text-[#232323] hover:text-blue-400 text-2xl transition-all duration-300  '>
             <AiOutlineShoppingCart />
           </Link>
-          <Link to='/checkout' className='text-[#232323] hover:text-blue-400 text-2xl transition-all duration-300  '>
-            <AiOutlineUser />
-          </Link>
+          <div className="relative">
+            <SignedOut>
+              <div className="dropdown">
+                <button className="text-[#232323] hover:text-blue-400 text-2xl transition-all duration-300">
+                  <AiOutlineUser />
+                </button>
+                <div className="dropdown-content absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+                  <SignInButton mode="modal">
+                    <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                      Sign In
+                    </button>
+                  </SignInButton>
+                  <SignInButton mode="modal">
+                    <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                      Sign Up
+                    </button>
+                  </SignInButton>
+                </div>
+              </div>
+            </SignedOut>
+            <SignedIn>
+              <div className="dropdown">
+                <UserButton 
+                  afterSignOutUrl="/"
+                  appearance={{
+                    elements: {
+                      avatarBox: "w-8 h-8 hover:text-blue-400 transition-all duration-300",
+                      userButtonPopoverCard: "z-50"
+                    }
+                  }}
+                />
+              </div>
+            </SignedIn>
+          </div>
         </div>
       </div>
     </nav>

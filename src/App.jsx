@@ -10,6 +10,7 @@ import Checkout from './pages/Checkout'
 import Layout from './components/Layout'
 import WishlistProvider from './context/WishlistContext'
 
+
 function App() {
   return (
     <WishlistProvider>
