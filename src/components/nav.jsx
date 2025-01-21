@@ -40,10 +40,10 @@ const Nav = () => {
           <AiOutlineSearch className='absolute right-3 text-[#232323]' />
         </div>
         <div className='flex space-x-6 items-center'>
-          <Link className='text-[#232323] hover:text-blue-400 text-2xl transition-all duration-300'>
+          <Link to='/wishlist' className='text-[#232323] hover:text-blue-400 text-2xl transition-all duration-300'>
             <AiOutlineHeart />
           </Link>
-          <Link className='text-[#232323] hover:text-blue-400 text-2xl transition-all duration-300  '>
+          <Link to='/cart' className='text-[#232323] hover:text-blue-400 text-2xl transition-all duration-300  '>
             <AiOutlineShoppingCart />
           </Link>
           <Link to='/checkout' className='text-[#232323] hover:text-blue-400 text-2xl transition-all duration-300  '>
