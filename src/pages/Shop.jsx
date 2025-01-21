@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 // import { FaHeart, FaShoppingCart } from 'react-icons/fa';
 import 'swiper/css';
 import products from '/src/constants/products';
