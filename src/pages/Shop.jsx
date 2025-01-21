@@ -9,8 +9,10 @@ import {
   IoIosArrowForward,
 } from 'react-icons/io';
 import { GiSettingsKnobs } from 'react-icons/gi';
+import { useNavigate } from 'react-router-dom';
 
 const Shop = () => {
+  const navigate = useNavigate();
   const [brandFilter, setBrandFilter] = useState('');
   const [priceFilter, setPriceFilter] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
@@ -43,12 +45,22 @@ const Shop = () => {
   // Handle pagination
   const totalPages = Math.ceil(filterProducts().length / itemsPerPage);
 
+  const handleViewProduct = (productId) => {
+    navigate(`/product/${productId}`);
+  };
+
   return (
     <main className='min-h-screen py-8 w-full px-10'>
       <div className='flex flex-row items-center gap-2 mb-10'>
         <p className='text-black text-sm'>Home</p>
         <IoIosArrowForward className='text-black text-sm' />
         <p className='text-[#EF0303] text-sm'>Shop</p>
+        {category && (
+          <>
+            <IoIosArrowForward className='text-black text-sm' />
+            <p className='text-[black] text-sm'>{category}</p>
+          </>
+        )}
       </div>
 
       <div className='flex flex-col lg:flex-row'>
@@ -208,6 +220,7 @@ const Shop = () => {
                     src={product.image}
                     alt={product.Name}
                     className='w-full h-full object-contain bg-[#E6EAF5] p-4'
+                    onClick={() => handleViewProduct(product.id)}
                   />
                 </div>
                 <div className='absolute top-2 right-2 flex flex-col gap-2'>
