@@ -16,6 +16,7 @@ function App() {
     <WishlistProvider>
       <div className="flex flex-col min-h-screen w-[100%]">
         <Nav />
+        <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
@@ -24,7 +25,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
         </Routes>
-        <Layout></Layout>
+        </Layout>
         <Footer />
       </div>
     </WishlistProvider>

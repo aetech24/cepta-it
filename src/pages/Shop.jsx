@@ -9,6 +9,7 @@ import {
 } from 'react-icons/io';
 import { GiSettingsKnobs } from 'react-icons/gi';
 import ProductGrid from '../components/ProductGrid';
+import { useCart } from '../context/CartContext';
 
 const Shop = () => {
   // const navigate = useNavigate();
@@ -16,6 +17,7 @@ const Shop = () => {
   const [priceFilter, setPriceFilter] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [category, setCategory] = useState(''); // Category filter
+  const { addToCart } = useCart();
   const itemsPerPage = 6;
 
   // Filter products based on brand, price, and category
@@ -47,6 +49,12 @@ const Shop = () => {
   // const handleViewProduct = (productId) => {
   //   navigate(`/product/${productId}`);
   // };
+
+   // Add to cart functionality
+   //const addToCart = (product) => {
+    //setCart((prevCart) => [...prevCart, product]);
+    //alert(`${product.Name} has been added to the cart!`);
+  //};
 
   return (
     <main className='min-h-screen py-8 w-full px-10'>
@@ -209,7 +217,7 @@ const Shop = () => {
           </div>
 
           {/* Product Grid */}
-          <ProductGrid products={paginatedProducts} />
+          <ProductGrid products={paginatedProducts} addToCart={addToCart} />
         </main>
       </div>
     </main>

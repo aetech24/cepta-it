@@ -1,8 +1,8 @@
-import React from 'react';
-import { FaHeart, FaShoppingCart } from 'react-icons/fa';
-import PropTypes from 'prop-types';
+import React from "react";
+import { FaHeart, FaShoppingCart } from "react-icons/fa";
+import PropTypes from "prop-types";
 
-const ProductGrid = ({ products }) => {
+const ProductGrid = ({ products, addToCart }) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-8 px-4 pt-10 mx-auto max-w-[100%]">
       {products.map((product) => (
@@ -20,7 +20,10 @@ const ProductGrid = ({ products }) => {
               <button className="p-2 bg-transparent rounded-full shadow hover:shadow-md hover:text-[#EF0303] transition">
                 <FaHeart className="text-lg text-[#00278c] hover:text-[#EF0303] transition duration-300" />
               </button>
-              <button className="p-2 bg-transparent rounded-full shadow hover:shadow-md hover:text-[#00278c] transition duration-300">
+              <button
+                onClick={() => addToCart(product)}
+                className="p-2 bg-transparent rounded-full shadow hover:shadow-md hover:text-[#00278c] transition duration-300"
+              >
                 <FaShoppingCart className="text-lg text-[#00278c] hover:text-[#EF0303] transition duration-300" />
               </button>
             </div>
@@ -44,10 +47,11 @@ ProductGrid.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       Name: PropTypes.string.isRequired,
-      price: PropTypes.string.isRequired,
-      image: PropTypes.any.isRequired,
+      price: PropTypes.number.isRequired,
+      image: PropTypes.string.isRequired,
     })
   ).isRequired,
+  addToCart: PropTypes.func.isRequired,
 };
 
 export default ProductGrid;
