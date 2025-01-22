@@ -71,7 +71,7 @@ const Home = () => {
               View All
             </button>
           </div>
-          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8 pt-12 md:pt-24'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 pt-12 md:pt-24'>
             {trendingProducts.map((product) => (
               <div key={product.id} className='flex flex-col items-center bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow'>
                 <img src={product.image} alt={product.name} className='w-full h-48 object-contain mb-4' />
@@ -140,7 +140,7 @@ const Home = () => {
               View All
             </button>
           </div>
-          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8 pt-12'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 pt-12'>
             {newProducts.map((product) => (
               <div key={product.id} className='flex flex-col items-center bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow'>
                 <img src={product.image} alt={product.name} className='w-full h-48 object-contain mb-4' />
@@ -250,26 +250,26 @@ const Home = () => {
           <div className='flex flex-row justify-between items-center pt-24 mx-auto w-[100%] px-14'>
             <div className='flex flex-row gap-8 justify-center items-center mx-auto'>
               <Link onClick={() => setCategory('featured')} className={`cursor-pointer text-gray-500 hover:text-black transition-all duration-300 group ${category === 'featured' ? 'text-black' : ''}`}>
-                <h4 className={`text-2xl font-[400] text-start relative ${category === 'featured' ? 'text-black' : 'text-gray-500'}`}>
+                <h4 className={`lg:text-2xl md:text-2xl text-lg font-[400] text-start relative ${category === 'featured' ? 'text-black' : 'text-gray-500'}`}>
                   Featured Products
                   <span className={`h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-0 mt-1 font-[2px] drop-shadow-xl ${category === 'featured' ? 'block text-black' : 'hidden group-hover:block'}`}></span>
                 </h4>
               </Link>
-              <Link onClick={() => setCategory('top')} className={`cursor-pointer text-gray-500 hover:text-black transition-all duration-300 group ${category === 'top' ? 'text-black' : ''}`}>
-                <h4 className={`text-2xl font-[400] text-start relative ${category === 'top' ? 'text-black' : 'text-gray-500'}`}>
+              <Link onClick={() => setCategory('top')} className={` cursor-pointer text-gray-500 hover:text-black transition-all duration-300 group ${category === 'top' ? 'text-black' : ''}`}>
+                <h4 className={`lg:text-2xl md:text-2xl text-lg font-[400] text-start relative ${category === 'top' ? 'text-black' : 'text-gray-500'}`}>
                   Top Products
                   <span className={`h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-0 mt-1 font-[2px] drop-shadow-xl ${category === 'top' ? 'block text-black' : 'hidden group-hover:block'}`}></span>
                 </h4>
               </Link>
               <Link onClick={() => setCategory('top-selling')} className={`cursor-pointer text-gray-500 hover:text-black transition-all duration-300 group ${category === 'top-selling' ? 'text-black' : ''}`}>
-                <h4 className={`text-2xl font-[400] text-start relative ${category === 'top-selling' ? 'text-black' : 'text-gray-500'}`}>
+                <h4 className={`lg:text-2xl md:text-2xl text-lg font-[400] text-start relative ${category === 'top-selling' ? 'text-black' : 'text-gray-500'}`}>
                   Top Selling Products
                   <span className={`h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-0 mt-1 font-[2px] drop-shadow-xl ${category === 'top-selling' ? 'block text-black' : 'hidden group-hover:block'}`}></span>
                 </h4>
               </Link>
             </div>
           </div>
-          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 pt-24 mx-auto w-[100%] px-14'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 pt-24 mx-auto w-[100%] px-14'>
             {displayProducts.map((product) => (
               <div key={product.id} className='flex flex-col items-center bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow'>
                 <img src={product.image} alt={product.name} className='w-full h-48 object-contain mb-4' />
