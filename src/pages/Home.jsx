@@ -33,141 +33,130 @@ const Home = () => {
   const displayProducts = products.filter(product => product.type === category);
 
   return (
-    <main className='min-h-screen py-8 w-[100%] mx-auto'>
+    <main className='min-h-screen py-8 w-full mx-auto'>
       <div className='flex flex-col'>
-      <div className='w-full h-[512px] bg-black flex flex-row justify-between items-center px-36 pt-24'>
-        <div className='flex flex-col justify-center items-start gap-4'>
-          <p className='text-white text-sm'>The All New</p>
-          <h2 className='text-white text-4xl font-bold text-wrap h-[132px] gap-2 tracking-wide leading-10'>
-            Apple <br />
-            <br />
-            iPhone 15 Pro Max
-          </h2>
-          <button onClick={() => navigate('/shop')} className='bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 text-white px-4 py-2'>
-            Shop Now
-          </button>
+        {/* Hero Section */}
+        <div className='w-full bg-black px-4 md:px-36 pt-12 md:pt-24'>
+          <div className='flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto'>
+            <div className='flex flex-col justify-center items-start gap-4 text-center md:text-left w-full md:w-auto'>
+              <p className='text-white text-sm'>The All New</p>
+              <h2 className='text-white text-3xl md:text-4xl font-bold tracking-wide leading-10 mb-4 md:mb-0'>
+                Apple <br />
+                iPhone 15 Pro Max
+              </h2>
+              <button onClick={() => navigate('/shop')} className='bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 text-white px-4 py-2 w-full md:w-auto'>
+                Shop Now
+              </button>
+            </div>
+            <div className='mt-8 md:mt-0'>
+              <img
+                src={heroBanner}
+                alt='hero-banner'
+                className='w-full max-w-[300px] md:max-w-[452.96px] h-auto mx-auto'
+              />
+            </div>
+          </div>
         </div>
-        <div>
-          <img
-            src={heroBanner}
-            alt='hero-banner'
-            className='bg-black pt-7 sm:w-[452.96px] sm:h-[390px] mt-7 max-sm:w-[247px] max-sm:h-[228px]'
-          ></img>
-        </div>
-      </div>
-      <div className='w-[100%] flex flex-col'>
-          <div className='flex flex-row flex-wrap justify-between items-center justify-self-center pt-24 mx-auto w-[100%] px-14'>
-            <div className=''>
-              <h4 className='text-black text-2xl font-[400] text-start relative'>
+
+        {/* Trending Products Section */}
+        <div className='w-full flex flex-col px-4 md:px-14'>
+          <div className='flex flex-col md:flex-row justify-between items-center pt-12 md:pt-24 gap-4 md:gap-0'>
+            <div>
+              <h4 className='text-black text-2xl font-[400] text-center md:text-start relative'>
                 Trending Products
-                <span className='block h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-0 mt-1 font-[2px] drop-shadow-xl'></span>
+                <span className='block h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-1/2 md:left-0 -translate-x-1/2 md:translate-x-0 mt-1'></span>
               </h4>
-            </div>{' '}
+            </div>
             <button onClick={() => navigate('/shop')} className='bg-none border-[1.4px] border-black text-black px-4 py-2 hover:bg-black hover:text-white transition-all duration-300'>
               View All
             </button>
           </div>
-          <div className='grid grid-cols-4 gap-8 pt-24 mx-auto w-[100%] px-14'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8 pt-12 md:pt-24'>
             {trendingProducts.map((product) => (
               <div key={product.id} className='flex flex-col items-center bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow'>
                 <img src={product.image} alt={product.name} className='w-full h-48 object-contain mb-4' />
-                <h2 className='text-lg font-semibold mb-2'>{product.Name}</h2>
+                <h2 className='text-lg font-semibold mb-2 text-center'>{product.Name}</h2>
                 <p className='text-red-500 font-bold'>${product.price}</p>
               </div>
             ))}
           </div>
         </div>
-      <div className='flex flex-row bg-[#E6EAF5] w-[1240px] h-[451px] max-sm:w-[100%] justify-self-center justify-between mx-auto mt-10 px-36'>
-        <div className='flex flex-col justify-center items-start gap-4'>
-          <p className='text-[#0E0F0F] text-sm'>Apple Deals</p>
-          <h2 className='text-[#0E0F0F] text-4xl font-bold text-wrap h-[132px] gap-2 tracking-wide leading-10'>
-            Flat $10 <br />
-            <br /> Over All iPhones
-          </h2>
-          <button onClick={() => navigate('/shop')} className='bg-[#EF0303] text-white px-4 py-2 hover:bg-[#00278C] transition-all duration-300'>
-            Shop Now
-          </button>
+
+        {/* Apple Deals Section */}
+        <div className='bg-[#E6EAF5] mt-10 px-4 md:px-36 py-12'>
+          <div className='flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto'>
+            <div className='flex flex-col justify-center items-center md:items-start gap-4 text-center md:text-left'>
+              <p className='text-[#0E0F0F] text-sm'>Apple Deals</p>
+              <h2 className='text-[#0E0F0F] text-3xl md:text-4xl font-bold tracking-wide leading-10 mb-4 md:mb-0'>
+                Flat $10 <br /> Over All iPhones
+              </h2>
+              <button onClick={() => navigate('/shop')} className='bg-[#EF0303] text-white px-4 py-2 hover:bg-[#00278C] transition-all duration-300 w-full md:w-auto'>
+                Shop Now
+              </button>
+            </div>
+            <div className='mt-8 md:mt-0'>
+              <img src={heroBanner} alt='hero-banner' className='w-full max-w-[300px] md:max-w-none h-auto mx-auto' />
+            </div>
+          </div>
         </div>
-        <div className='mt-[61px]'>
-          <img src={heroBanner} alt='hero-banner' className=''></img>
-        </div>
-      </div>
-      <div className='w-[100%] flex flex-col'>
-        <div className='flex flex-row justify-between items-center justify-self-center pt-24 mx-auto w-[1240px]'>
-          <h4 className='text-black text-2xl font-[400] text-start relative'>
+
+        {/* Categories Section */}
+        <div className='w-full px-4 md:px-14 mt-12'>
+          <h4 className='text-black text-2xl font-[400] text-center md:text-start relative mb-12'>
             Categories
-            <span className='block h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-0 mt-1 font-[2px] drop-shadow-xl'></span>
+            <span className='block h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-1/2 md:left-0 -translate-x-1/2 md:translate-x-0 mt-1'></span>
           </h4>
-        </div>{' '}
-        <div className='flex flex-row col-6 justify-between items-center w-[100%] mx-auto px-14 pt-24 gap-5 max-sm:overflow-x-scroll max-sm:overflow-y-hidden'>
-          <div className='w-[170px] h-[145px] bg-none max-sm:w-[170px] rounded-[4px] border-[1px] border-black flex flex-col justify-center items-center hover:bg-black group hover:text-white transition-all duration-300 gap-3'>
-            <SlScreenSmartphone className='text-black font-light w-[56px] h-[56px] group-hover:text-white' />
-            <p className='text-black font-light group-hover:text-white'>
-              Smartphones
-            </p>
-          </div>
-          <div className='w-[170px] h-[145px] bg-none max-sm:w-[170px] rounded-[4px] border-[1px] border-black flex flex-col justify-center items-center hover:bg-black group hover:text-white transition-all duration-300 gap-3'>
-            <HiOutlineComputerDesktop className='text-black font-light w-[56px] h-[56px] group-hover:text-white' />
-            <p className='text-black font-light group-hover:text-white'>
-              Computers
-            </p>
-          </div>
-          <div className='w-[170px] h-[145px] bg-none max-sm:w-[170px] rounded-[4px] border-[1px] border-black flex flex-col justify-center items-center hover:bg-black group hover:text-white transition-all duration-300 gap-3'>
-            <BsSmartwatch className='text-black font-light w-[56px] h-[56px] group-hover:text-white' />
-            <p className='text-black font-light group-hover:text-white'>
-              Smartwatches
-            </p>
-          </div>
-          <div className='w-[170px] h-[145px] bg-none max-sm:w-[170px] rounded-[4px] border-[1px] border-black flex flex-col justify-center items-center hover:bg-black group hover:text-white transition-all duration-300 gap-3'>
-            <AiOutlineCamera className='text-black font-light w-[56px] h-[56px] group-hover:text-white' />
-            <p className='text-black font-light group-hover:text-white'>
-              Cameras
-            </p>
-          </div>
-          <div className='w-[170px] h-[145px] bg-none max-sm:w-[170px] rounded-[4px] border-[1px] border-black flex flex-col justify-center items-center hover:bg-black group hover:text-white transition-all duration-300 gap-3'>
-            <CiHeadphones className='text-black font-light w-[56px] h-[56px] group-hover:text-white' />
-            <p className='text-black font-light group-hover:text-white'>
-              Headphones
-            </p>
-          </div>
-          <div className='w-[170px] h-[145px] bg-none max-sm:w-[170px] rounded-[4px] border-[1px] border-black flex flex-col justify-center items-center hover:bg-black group hover:text-white transition-all duration-300 gap-3'>
-            <LuGamepad className='text-black font-light w-[56px] h-[56px] group-hover:text-white' />
-            <p className='text-black font-light group-hover:text-white'>
-              Gaming
-            </p>
+          <div className='flex flex-row md:grid md:grid-cols-3 lg:grid-cols-6 gap-4 overflow-x-auto md:overflow-x-visible pb-4 md:pb-0'>
+            {[
+              { icon: <SlScreenSmartphone />, name: 'Smartphones' },
+              { icon: <HiOutlineComputerDesktop />, name: 'Computers' },
+              { icon: <BsSmartwatch />, name: 'Smartwatches' },
+              { icon: <AiOutlineCamera />, name: 'Cameras' },
+              { icon: <CiHeadphones />, name: 'Headphones' },
+              { icon: <LuGamepad />, name: 'Gaming' }
+            ].map((category, index) => (
+              <div key={index} className='min-w-[170px] h-[145px] bg-none rounded-[4px] border-[1px] border-black flex flex-col justify-center items-center hover:bg-black group hover:text-white transition-all duration-300 gap-3'>
+                <div className='text-black font-light w-[56px] h-[56px] group-hover:text-white'>
+                  {category.icon}
+                </div>
+                <p className='text-black font-light group-hover:text-white'>
+                  {category.name}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
-        <div className='w-[100%] flex flex-col'>
-          <div className='flex flex-row justify-between items-center justify-self-center pt-24 mx-auto w-[100%] px-14'>
-            <div className=''>
-              <h4 className='text-black text-2xl font-[400] text-start relative'>
+
+        {/* New Arrivals Section */}
+        <div className='w-full flex flex-col px-4 md:px-14 mt-12'>
+          <div className='flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0'>
+            <div>
+              <h4 className='text-black text-2xl font-[400] text-center md:text-start relative'>
                 New Arrivals
-                <span className='block h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-0 mt-1 font-[2px] drop-shadow-xl'></span>
+                <span className='block h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-1/2 md:left-0 -translate-x-1/2 md:translate-x-0 mt-1'></span>
               </h4>
-            </div>{' '}
+            </div>
             <button onClick={() => navigate('/shop')} className='bg-none border-[1.4px] border-black text-black px-4 py-2 hover:bg-black hover:text-white transition-all duration-300'>
               View All
             </button>
           </div>
-          <div className='grid grid-cols-4 gap-8 pt-24 mx-auto w-[100%] px-14'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8 pt-12'>
             {newProducts.map((product) => (
               <div key={product.id} className='flex flex-col items-center bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow'>
                 <img src={product.image} alt={product.name} className='w-full h-48 object-contain mb-4' />
-                <h2 className='text-lg font-semibold mb-2'>{product.Name}</h2>
+                <h2 className='text-lg font-semibold mb-2 text-center'>{product.Name}</h2>
                 <p className='text-red-500 font-bold'>${product.price}</p>
               </div>
             ))}
           </div>
-          {/* <ProductGrid
-            products={newProducts}
-            className='grid grid-cols-1 sm:grid-cols-4 gap-8 px-4 pt-10 mx-auto max-w-[100%]'
-          /> */}
         </div>
-        <div className='flex justify-between items-center pt-24 mx-auto mb-10 w-[100%] h-[600px] px-14 gap-6'>
+
+        {/* Banner Section */}
+        <div className='flex flex-col lg:flex-row gap-6 pt-12 md:pt-24 px-4 md:px-14 mb-10'>
           {/* Left Banner */}
-          <div className='bg-black h-full w-1/2 relative'>
+          <div className='bg-black w-full lg:w-1/2 relative min-h-[300px] lg:h-[600px]'>
             <div className='flex flex-col justify-center items-start gap-4 absolute bottom-[20px] left-[20px] p-8 z-10'>
-              <h2 className='text-white text-4xl font-bold text-wrap gap-2 tracking-wide leading-10'>
+              <h2 className='text-white text-2xl md:text-4xl font-bold tracking-wide leading-tight'>
                 New Products
               </h2>
               <p className='text-white text-sm'>
@@ -177,22 +166,18 @@ const Home = () => {
                 Shop Now
               </button>
             </div>
-            <img
-              src={leftBanner}
-              alt='left-banner'
-              className='w-[511px] h-[500px] object-cover'
-            />
+            <img src={leftBanner} alt="PS5 Banner" className='absolute top-0 right-0 h-full w-auto object-cover' />
           </div>
 
           {/* Right Banners */}
-          <div className='flex flex-col w-1/2 h-full gap-4'>
+          <div className='flex flex-col gap-6 w-full lg:w-1/2'>
             {/* Top Right Banner */}
-            <div className='bg-black h-1/2 relative'>
+            <div className='bg-[#E6EAF5] relative min-h-[250px] lg:h-[290px]'>
               <div className='flex flex-col justify-end items-start gap-4 absolute bottom-0 left-0 p-8 z-10'>
-                <h2 className='text-white text-4xl font-bold text-wrap gap-2 tracking-wide leading-10'>
+                <h2 className='text-[#0E0F0F] text-2xl md:text-4xl font-bold tracking-wide leading-tight'>
                   Featured Products
                 </h2>
-                <p className='text-white text-sm'>
+                <p className='text-[#0E0F0F] text-sm'>
                   Featured Products that give you another vibe
                 </p>
                 <button onClick={() => navigate('/shop')} className='bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 text-white px-4 py-2'>
@@ -202,14 +187,14 @@ const Home = () => {
               <img
                 src={rightTopBanner}
                 alt='right-top-banner'
-                className='w-[214px] h-[220px] object-cover absolute right-[20px] top-[20px]'
+                className='w-full max-w-[300px] md:max-w-none h-auto mx-auto'
               />
             </div>
 
             {/* Bottom Right Banner */}
-            <div className='bg-black h-1/2 relative'>
+            <div className='bg-black relative min-h-[250px] lg:h-[290px]'>
               <div className='flex flex-col justify-end items-start gap-4 absolute bottom-0 left-0 p-8 z-10'>
-                <h2 className='text-white text-4xl font-bold text-wrap gap-2 tracking-wide leading-10'>
+                <h2 className='text-white text-2xl md:text-4xl font-bold tracking-wide leading-tight'>
                   Top Products
                 </h2>
                 <p className='text-white text-sm'>
@@ -222,12 +207,14 @@ const Home = () => {
               <img
                 src={rightBottomBanner}
                 alt='right-bottom-banner'
-                className='w-[300px] h-[200px] object-cover absolute right-[20px] bottom-[20px]'
+                className='w-full max-w-[300px] md:max-w-none h-auto mx-auto'
               />
             </div>
           </div>
         </div>
-        <div className='flex flex-row justify-center items-center mx-auto w-[100%] h-[344px] my-auto px-14 gap-10  bg-[#FDE6E6]'>
+
+        {/* Features Section */}
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-4 md:px-14 py-12 bg-[#E6EAF5]'>
           <div className='flex flex-row items-center gap-4'>
             <PiTruck className='text-[#EF0303] w-[56px] h-[56px]' />
             <div>
@@ -257,7 +244,9 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className='w-[100%] flex flex-col pb-5 mx-auto'>
+
+        {/* Product Grid Section */}
+        <div className='w-full flex flex-col pb-5 mx-auto'>
           <div className='flex flex-row justify-between items-center pt-24 mx-auto w-[100%] px-14'>
             <div className='flex flex-row gap-8 justify-center items-center mx-auto'>
               <Link onClick={() => setCategory('featured')} className={`cursor-pointer text-gray-500 hover:text-black transition-all duration-300 group ${category === 'featured' ? 'text-black' : ''}`}>
@@ -269,7 +258,7 @@ const Home = () => {
               <Link onClick={() => setCategory('top')} className={`cursor-pointer text-gray-500 hover:text-black transition-all duration-300 group ${category === 'top' ? 'text-black' : ''}`}>
                 <h4 className='text-2xl font-[400] text-start relative'>
                   Top Products
-                  <span className={`h-[2px] bg-[EF0303#] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-0 mt-1 font-[2px] drop-shadow-xl ${category === 'top' ? 'block text-black' : 'hidden group-hover:block'}`}></span>
+                  <span className={`h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-0 mt-1 font-[2px] drop-shadow-xl ${category === 'top' ? 'block text-black' : 'hidden group-hover:block'}`}></span>
                 </h4>
               </Link>
               <Link onClick={() => setCategory('top-selling')} className={`cursor-pointer text-gray-500 hover:text-black transition-all duration-300 group ${category === 'top-selling' ? 'text-black' : ''}`}>
@@ -280,7 +269,7 @@ const Home = () => {
               </Link>
             </div>
           </div>
-          <div className='grid grid-cols-4 gap-8 pt-24 mx-auto w-[100%] px-14'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 pt-24 mx-auto w-[100%] px-14'>
             {displayProducts.map((product) => (
               <div key={product.id} className='flex flex-col items-center bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow'>
                 <img src={product.image} alt={product.name} className='w-full h-48 object-contain mb-4' />
@@ -288,7 +277,6 @@ const Home = () => {
                 <p className='text-red-500 font-bold'>${product.price}</p>
               </div>
             ))}
-            </div>
           </div>
         </div>
       </div>

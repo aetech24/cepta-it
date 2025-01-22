@@ -4,7 +4,42 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Base styles */
+:root {
+  --max-width: 1440px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 body {
   font-family: 'Montserrat', sans-serif;
+  line-height: 1.5;
+  position: relative;
+}
+
+/* Container utilities */
+@layer components {
+  .container-custom {
+    @apply w-full max-w-[var(--max-width)] mx-auto px-4 md:px-6 lg:px-8;
+  }
+  
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 }
