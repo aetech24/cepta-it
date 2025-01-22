@@ -1,31 +1,11 @@
 import React from "react";
 import { FiMinus, FiPlus, FiX } from "react-icons/fi";
 import { useCart } from "../context/CartContext";
+import { updateQuantity, removeItem, calculateSubtotal } from "../utils/cartUtils";
 
 const Cart = () => {
-  const { cart, setCart } = useCart(); 
-
-  // Update quantity
-  const updateQuantity = (id, increment) => {
-    setCart((prevCart) =>
-      prevCart.map((item) =>
-        item.id === id
-          ? { ...item, quantity: Math.max(1, item.quantity + increment) }
-          : item
-      )
-    );
-  };
-
-  // Remove item
-  const removeItem = (id) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== id));
-  };
-
-  // Calculate subtotal
-  const subtotal = cart.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  );
+  const { cart, setCart } = useCart();
+  const subtotal = calculateSubtotal(cart);
 
   // Handle empty cart scenario
   if (cart.length === 0) {
@@ -89,14 +69,14 @@ const Cart = () => {
               {/* Quantity */}
               <div className="flex items-center space-x-2">
                 <button
-                  onClick={() => updateQuantity(item.id, -1)}
+                  onClick={() => updateQuantity(setCart, item.id, -1)}
                   className="px-2 py-1 bg-gray-200 rounded-md hover:bg-gray-300"
                 >
                   <FiMinus />
                 </button>
                 <span className="font-medium">{item.quantity}</span>
                 <button
-                  onClick={() => updateQuantity(item.id, 1)}
+                  onClick={() => updateQuantity(setCart, item.id, 1)}
                   className="px-2 py-1 bg-gray-200 rounded-md hover:bg-gray-300"
                 >
                   <FiPlus />
@@ -110,7 +90,7 @@ const Cart = () => {
 
               {/* Remove Button */}
               <button
-                onClick={() => removeItem(item.id)}
+                onClick={() => removeItem(setCart, item.id)}
                 className="text-red-500 hover:text-red-700"
               >
                 <FiX />

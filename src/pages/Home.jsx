@@ -104,7 +104,7 @@ const Home = () => {
         <div className='w-full px-4 md:px-14 mt-12'>
           <h4 className='text-black text-2xl font-[400] text-center md:text-start relative mb-12'>
             Categories
-            <span className='block h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-1/2 md:left-0 -translate-x-1/2 md:translate-x-0 mt-1'></span>
+            <span className='block h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-1/2 md:left-0 -translate-x-1/2 md:translate-x-0 mt-1 md:w-[10%]'></span>
           </h4>
           <div className='flex flex-row md:grid md:grid-cols-3 lg:grid-cols-6 gap-4 overflow-x-auto md:overflow-x-visible pb-4 md:pb-0'>
             {[
@@ -187,7 +187,7 @@ const Home = () => {
               <img
                 src={rightTopBanner}
                 alt='right-top-banner'
-                className='w-full max-w-[300px] md:max-w-none h-auto mx-auto'
+                className='w-full max-w-[300px] md:max-w-none h-auto mx-auto absolute top-0 right-0 md:w-[200px]'
               />
             </div>
 
@@ -207,7 +207,7 @@ const Home = () => {
               <img
                 src={rightBottomBanner}
                 alt='right-bottom-banner'
-                className='w-full max-w-[300px] md:max-w-none h-auto mx-auto'
+                className='w-full max-w-[300px] md:max-w-none h-auto mx-auto absolute bottom-2 right-0 md:w-[250px]'
               />
             </div>
           </div>
@@ -250,19 +250,19 @@ const Home = () => {
           <div className='flex flex-row justify-between items-center pt-24 mx-auto w-[100%] px-14'>
             <div className='flex flex-row gap-8 justify-center items-center mx-auto'>
               <Link onClick={() => setCategory('featured')} className={`cursor-pointer text-gray-500 hover:text-black transition-all duration-300 group ${category === 'featured' ? 'text-black' : ''}`}>
-                <h4 className='text-2xl font-[400] text-start relative'>
+                <h4 className={`text-2xl font-[400] text-start relative ${category === 'featured' ? 'text-black' : 'text-gray-500'}`}>
                   Featured Products
                   <span className={`h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-0 mt-1 font-[2px] drop-shadow-xl ${category === 'featured' ? 'block text-black' : 'hidden group-hover:block'}`}></span>
                 </h4>
               </Link>
               <Link onClick={() => setCategory('top')} className={`cursor-pointer text-gray-500 hover:text-black transition-all duration-300 group ${category === 'top' ? 'text-black' : ''}`}>
-                <h4 className='text-2xl font-[400] text-start relative'>
+                <h4 className={`text-2xl font-[400] text-start relative ${category === 'top' ? 'text-black' : 'text-gray-500'}`}>
                   Top Products
                   <span className={`h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-0 mt-1 font-[2px] drop-shadow-xl ${category === 'top' ? 'block text-black' : 'hidden group-hover:block'}`}></span>
                 </h4>
               </Link>
               <Link onClick={() => setCategory('top-selling')} className={`cursor-pointer text-gray-500 hover:text-black transition-all duration-300 group ${category === 'top-selling' ? 'text-black' : ''}`}>
-                <h4 className='text-2xl font-[400] text-start relative'>
+                <h4 className={`text-2xl font-[400] text-start relative ${category === 'top-selling' ? 'text-black' : 'text-gray-500'}`}>
                   Top Selling Products
                   <span className={`h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-0 mt-1 font-[2px] drop-shadow-xl ${category === 'top-selling' ? 'block text-black' : 'hidden group-hover:block'}`}></span>
                 </h4>
