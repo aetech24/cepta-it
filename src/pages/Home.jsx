@@ -263,19 +263,19 @@ const Home = () => {
               <Link onClick={() => setCategory('featured')} className={`cursor-pointer text-gray-500 hover:text-black transition-all duration-300 group ${category === 'featured' ? 'text-black' : ''}`}>
                 <h4 className='text-2xl font-[400] text-start relative'>
                   Featured Products
-                  <span className={`h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-0 mt-1 font-[2px] drop-shadow-xl ${category === 'featured' ? 'block' : 'hidden group-hover:block'}`}></span>
+                  <span className={`h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-0 mt-1 font-[2px] drop-shadow-xl ${category === 'featured' ? 'block text-black' : 'hidden group-hover:block'}`}></span>
                 </h4>
               </Link>
               <Link onClick={() => setCategory('top')} className={`cursor-pointer text-gray-500 hover:text-black transition-all duration-300 group ${category === 'top' ? 'text-black' : ''}`}>
                 <h4 className='text-2xl font-[400] text-start relative'>
                   Top Products
-                  <span className={`h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-0 mt-1 font-[2px] drop-shadow-xl ${category === 'top' ? 'block' : 'hidden group-hover:block'}`}></span>
+                  <span className={`h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-0 mt-1 font-[2px] drop-shadow-xl ${category === 'top' ? 'block text-black' : 'hidden group-hover:block'}`}></span>
                 </h4>
               </Link>
               <Link onClick={() => setCategory('top-selling')} className={`cursor-pointer text-gray-500 hover:text-black transition-all duration-300 group ${category === 'top-selling' ? 'text-black' : ''}`}>
                 <h4 className='text-2xl font-[400] text-start relative'>
                   Top Selling Products
-                  <span className={`h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-0 mt-1 font-[2px] drop-shadow-xl ${category === 'top-selling' ? 'block' : 'hidden group-hover:block'}`}></span>
+                  <span className={`h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-0 mt-1 font-[2px] drop-shadow-xl ${category === 'top-selling' ? 'block text-black' : 'hidden group-hover:block'}`}></span>
                 </h4>
               </Link>
             </div>

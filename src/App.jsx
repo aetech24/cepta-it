@@ -10,6 +10,7 @@ import Checkout from './pages/Checkout'
 import Layout from './components/Layout'
 import WishlistProvider from './context/WishlistContext'
 import { CartProvider } from './context/CartContext'
+import Search from './pages/Search'
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/checkout" element={<Checkout />} />
+              <Route path="/search" element={<Search />} />
             </Routes>
           </Layout>
           <Footer />

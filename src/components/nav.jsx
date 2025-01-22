@@ -6,10 +6,44 @@ import {
   AiOutlineSearch,
 } from 'react-icons/ai';
 import logo from '../assets/ceptalogo 1.jpg';
-import { ClerkProvider, SignedIn, SignedOut, UserButton, SignInButton } from '@clerk/clerk-react'
+import { SignedIn, SignedOut, UserButton, SignInButton } from '@clerk/clerk-react'
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import products from '../constants/products';
 
 
 const Nav = () => {
+  const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState('');
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [searchResults, setSearchResults] = useState([]);
+
+  // Handle real-time search as user types
+  const handleSearchInput = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+    
+    if (value.length > 0) {
+      const filtered = products.filter(product => {
+        const term = value.toLowerCase();
+        return (
+          product.Name.toLowerCase().includes(term) ||
+          product.type.toLowerCase().includes(term) ||
+          product.cat.toLowerCase().includes(term)
+        );
+      }).slice(0, 5); // Limit to 5 results
+      setSearchResults(filtered);
+      setShowDropdown(true);
+    } else {
+      setShowDropdown(false);
+    }
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    navigate(`/search?q=${searchTerm}`);
+  };
+
   return (
     <nav className='w-full sticky top-0 transition-all duration-300 backdrop-blur-md bg-opacity-90 z-50 drop-shadow-xl'>
       <div className='w-full bg-[#00278C] p-2 text-center'>
@@ -34,12 +68,46 @@ const Nav = () => {
           </Link>
         </div>
         <div className='flex items-center relative w-[283px] h-[38px]'>
-          <input
-            type='search'
-            placeholder='Search'
-            className='w-[283px] h-[40px] p-2 pr-10 bg-[#E6EAF5] border-none focus:outline-none'
-          />
-          <AiOutlineSearch className='absolute right-3 text-[#232323]' />
+          <form onSubmit={handleSearch} className="relative w-full">
+            <input
+              type='search'
+              placeholder='Search'
+              value={searchTerm}
+              onChange={handleSearchInput}
+              onBlur={() => setTimeout(() => setShowDropdown(false), 200)}
+              className='w-full h-[40px] p-2 pr-10 bg-[#E6EAF5] border-none focus:outline-none rounded'
+            />
+            <button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2">
+              <AiOutlineSearch className='text-[#232323] text-xl' />
+            </button>
+            
+            {/* Search Dropdown */}
+            {showDropdown && searchResults.length > 0 && (
+              <div className="absolute top-full left-0 right-0 mt-1 bg-white border rounded-md shadow-lg z-50">
+                {searchResults.map((product) => (
+                  <div
+                    key={product.id}
+                    className="p-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2"
+                    onClick={() => {
+                      setSearchTerm(product.Name);
+                      setShowDropdown(false);
+                      navigate(`/search?q=${product.Name}`);
+                    }}
+                  >
+                    <img 
+                      src={product.image} 
+                      alt={product.Name} 
+                      className="w-8 h-8 object-contain"
+                    />
+                    <div>
+                      <div className="text-sm font-medium">{product.Name}</div>
+                      <div className="text-xs text-gray-500">{product.cat}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </form>
         </div>
         <div className='flex space-x-6 items-center'>
           <Link to='/wishlist' className='text-[#232323] hover:text-blue-400 text-2xl transition-all duration-300'>
