@@ -4,6 +4,7 @@ import {
   AiOutlineShoppingCart,
   AiOutlineUser,
   AiOutlineSearch,
+  AiOutlineClose
 } from 'react-icons/ai';
 import logo from '../assets/ceptalogo 1.jpg';
 import { SignedIn, SignedOut, UserButton, SignInButton } from '@clerk/clerk-react'
@@ -15,8 +16,8 @@ import products from '../constants/products';
 const Nav = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
-  const [showDropdown, setShowDropdown] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   // Handle real-time search as user types
   const handleSearchInput = (e) => {
@@ -33,15 +34,18 @@ const Nav = () => {
         );
       }).slice(0, 5); // Limit to 5 results
       setSearchResults(filtered);
-      setShowDropdown(true);
     } else {
-      setShowDropdown(false);
+      setSearchResults([]);
     }
   };
 
   const handleSearch = (e) => {
     e.preventDefault();
     navigate(`/search?q=${searchTerm}`);
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
   };
 
   return (
@@ -74,7 +78,6 @@ const Nav = () => {
               placeholder='Search'
               value={searchTerm}
               onChange={handleSearchInput}
-              onBlur={() => setTimeout(() => setShowDropdown(false), 200)}
               className='w-full h-[40px] p-2 pr-10 bg-[#E6EAF5] border-none focus:outline-none rounded'
             />
             <button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2">
@@ -82,7 +85,7 @@ const Nav = () => {
             </button>
             
             {/* Search Dropdown */}
-            {showDropdown && searchResults.length > 0 && (
+            {searchResults.length > 0 && (
               <div className="absolute top-full left-0 right-0 mt-1 bg-white border rounded-md shadow-lg z-50">
                 {searchResults.map((product) => (
                   <div
@@ -90,7 +93,6 @@ const Nav = () => {
                     className="p-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2"
                     onClick={() => {
                       setSearchTerm(product.Name);
-                      setShowDropdown(false);
                       navigate(`/search?q=${product.Name}`);
                     }}
                   >
@@ -119,21 +121,27 @@ const Nav = () => {
           <div className="relative">
             <SignedOut>
               <div className="dropdown">
-                <button className="text-[#232323] hover:text-blue-400 text-2xl transition-all duration-300">
+                <button 
+                  onClick={toggleDropdown}
+                  className="text-[#232323] hover:text-blue-400 text-2xl transition-all duration-300"
+                >
                   <AiOutlineUser />
                 </button>
-                <div className="dropdown-content absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
-                  <SignInButton mode="modal">
-                    <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                      Sign In
-                    </button>
-                  </SignInButton>
-                  <SignInButton mode="modal">
-                    <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                      Sign Up
-                    </button>
-                  </SignInButton>
-                </div>
+                {isDropdownOpen && (
+                  <div className="dropdown-content absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+                    <SignInButton mode="modal">
+                      <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                        Sign In
+                      </button>
+                    </SignInButton>
+                    
+                    <SignInButton mode="modal">
+                      <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                        Sign Up
+                      </button>
+                    </SignInButton>
+                  </div>
+                )}
               </div>
             </SignedOut>
             <SignedIn>

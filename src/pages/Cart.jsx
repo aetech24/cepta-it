@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { FiMinus, FiPlus, FiX } from "react-icons/fi";
 import { useCart } from "../context/CartContext";
 
 const Cart = () => {
-  const { cart, setCart } = useCart(); // Ensure we use the context's cart and setCart functions
+  const { cart, setCart } = useCart(); 
 
   // Update quantity
   const updateQuantity = (id, increment) => {
@@ -34,11 +34,11 @@ const Cart = () => {
         <div className="container mx-auto text-center">
           <h2 className="text-lg font-semibold mb-4">Your Cart is Empty</h2>
           <p className="text-gray-500 mb-4">
-            Looks like you haven’t added anything to your cart yet.
+            Looks like you haven&apos;t added anything to your cart yet.
           </p>
           <a
             href="/shop"
-            className="bg-red-500 text-white font-medium py-2 px-4 rounded-md hover:bg-red-600"
+            className=" bg-[#EF0303] hover:bg-[#00278C] text-[#ffffff] font-medium py-2 px-4 transition-all duration-300"
           >
             Continue Shopping
           </a>
