@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 
 const Layout = ({ children }) => {
   return (
-    <div>
-      {children}
+    <main className="min-h-screen w-full">
+      <div className="container-custom">
+        {children}
+      </div>
       <ScrollToTop />
-    </div>
+    </main>
   );
 };
 
@@ -14,4 +16,4 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default Layout; 
+export default Layout;
