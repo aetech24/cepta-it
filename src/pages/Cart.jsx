@@ -7,8 +7,7 @@ import { updateQuantity, removeItem, calculateSubtotal } from "../utils/cartUtil
 const Cart = () => {
   const { cart, updateQuantity, removeFromCart, totalValue } = useCart();
 
-  const { cart, setCart } = useCart();
-  const subtotal = calculateSubtotal(cart);
+ 
 
   // Handle empty cart scenario
   if (cart.length === 0) {
@@ -69,22 +68,6 @@ const Cart = () => {
         <p className="text-gray-500">GH₵{parseFloat(item.price) || 0}</p>
       </div>
 
-              {/* Quantity */}
-              <div className="flex items-center space-x-2">
-                <button
-                  onClick={() => updateQuantity(setCart, item.id, -1)}
-                  className="px-2 py-1 bg-gray-200 rounded-md hover:bg-gray-300"
-                >
-                  <FiMinus />
-                </button>
-                <span className="font-medium">{item.quantity}</span>
-                <button
-                  onClick={() => updateQuantity(setCart, item.id, 1)}
-                  className="px-2 py-1 bg-gray-200 rounded-md hover:bg-gray-300"
-                >
-                  <FiPlus />
-                </button>
-              </div>
       {/* Quantity Control */}
       <div className="col-span-1 flex items-center justify-center space-x-2">
         <button
