@@ -1,4 +1,3 @@
-import React from "react";
 import { FiMinus, FiPlus, FiX } from "react-icons/fi";
 import { useCart } from "../context/CartContext";
 import { updateQuantity, removeItem, calculateSubtotal } from "../utils/cartUtils";

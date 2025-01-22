@@ -52,7 +52,7 @@ const Home = () => {
               <img
                 src={heroBanner}
                 alt='hero-banner'
-                className='w-full max-w-[300px] md:max-w-[452.96px] h-auto mx-auto'
+                className='w-full max-w-[300px] md:max-w-[452.96px] h-auto mx-auto '
               />
             </div>
           </div>
@@ -83,8 +83,8 @@ const Home = () => {
         </div>
 
         {/* Apple Deals Section */}
-        <div className='bg-[#E6EAF5] mt-10 px-4 md:px-36 py-12'>
-          <div className='flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto'>
+        <div className='bg-[#E6EAF5] mt-10 px-4 md:px-36'>
+          <div className='flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto mb-auto pt-12 md:pt-24'>
             <div className='flex flex-col justify-center items-center md:items-start gap-4 text-center md:text-left'>
               <p className='text-[#0E0F0F] text-sm'>Apple Deals</p>
               <h2 className='text-[#0E0F0F] text-3xl md:text-4xl font-bold tracking-wide leading-10 mb-4 md:mb-0'>
@@ -108,12 +108,12 @@ const Home = () => {
           </h4>
           <div className='flex flex-row md:grid md:grid-cols-3 lg:grid-cols-6 gap-4 overflow-x-auto md:overflow-x-visible pb-4 md:pb-0'>
             {[
-              { icon: <SlScreenSmartphone />, name: 'Smartphones' },
-              { icon: <HiOutlineComputerDesktop />, name: 'Computers' },
-              { icon: <BsSmartwatch />, name: 'Smartwatches' },
-              { icon: <AiOutlineCamera />, name: 'Cameras' },
-              { icon: <CiHeadphones />, name: 'Headphones' },
-              { icon: <LuGamepad />, name: 'Gaming' }
+              { icon: <SlScreenSmartphone className='w-[56px] h-[56px]'/>, name: 'Smartphones' },
+              { icon: <HiOutlineComputerDesktop className='w-[56px] h-[56px]'/>, name: 'Computers' },
+              { icon: <BsSmartwatch className='w-[56px] h-[56px]'/>, name: 'Smartwatches' },
+              { icon: <AiOutlineCamera className='w-[56px] h-[56px]'/>, name: 'Cameras' },
+              { icon: <CiHeadphones className='w-[56px] h-[56px]'/>, name: 'Headphones' },
+              { icon: <LuGamepad className='w-[56px] h-[56px]'/>, name: 'Gaming' }
             ].map((category, index) => (
               <div key={index} className='min-w-[170px] h-[145px] bg-none rounded-[4px] border-[1px] border-black flex flex-col justify-center items-center hover:bg-black group hover:text-white transition-all duration-300 gap-3'>
                 <div className='text-black font-light w-[56px] h-[56px] group-hover:text-white'>

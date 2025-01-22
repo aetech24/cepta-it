@@ -78,7 +78,7 @@ const Nav = () => {
 
             {/* Mobile Menu Button */}
             <button 
-              className='md:hidden p-2 text-[#232323] hover:text-blue-400'
+              className='lg:hidden p-2 text-[#232323] hover:text-blue-400'
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -86,7 +86,7 @@ const Nav = () => {
             </button>
 
             {/* Desktop Navigation */}
-            <div className='hidden md:flex items-center space-x-6'>
+            <div className='hidden lg:flex items-center space-x-6'>
               <Link to='/' className='text-[#232323] hover:text-blue-400 transition-all duration-300'>
                 Home
               </Link>
@@ -102,7 +102,7 @@ const Nav = () => {
             </div>
 
             {/* Desktop Search and Icons */}
-            <div className='hidden md:flex items-center space-x-6'>
+            <div className='hidden lg:flex items-center space-x-6'>
               <div className='relative w-[283px]'>
                 <form onSubmit={handleSearch} className="relative w-full">
                   <input
@@ -171,7 +171,7 @@ const Nav = () => {
           <div 
             className={`${
               isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
-            } md:hidden fixed top-0 left-0 w-full h-[calc(100vh-128px)] bg-white transform transition-transform duration-300 ease-in-out z-50`}
+            } lg:hidden fixed top-0 left-0 w-full h-[calc(100vh-128px)] bg-white transform transition-transform duration-300 ease-in-out z-50`}
             style={{ top: 'calc(88px + 40px)' }} // Height of header + announcement bar
           >
             <div className='h-full overflow-y-auto'>

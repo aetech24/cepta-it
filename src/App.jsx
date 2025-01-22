@@ -12,6 +12,8 @@ import WishlistProvider from './context/WishlistContext'
 import { CartProvider } from './context/CartContext'
 import Search from './pages/Search'
 import { ClerkProvider } from '@clerk/clerk-react'
+import MobileViewIconsBottom from './components/MobileViewIconsBottom'
+import ScrollToTop from './components/ScrollToTop'
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
@@ -24,7 +26,7 @@ function App() {
     <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
       <WishlistProvider>
         <CartProvider>
-          <div className="flex flex-col min-h-screen w-[100%]">
+          <div className="flex flex-col min-h-screen w-[100%] relative">
             <Nav />
             <Layout>
               <Routes>
@@ -38,9 +40,11 @@ function App() {
               </Routes>
             </Layout>
             <Footer />
+            <MobileViewIconsBottom/> 
           </div>
         </CartProvider>
       </WishlistProvider>
+      <ScrollToTop />
     </ClerkProvider>
   )
 }
