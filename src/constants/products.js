@@ -9,6 +9,13 @@ import Monitor from "../assets/monitor.png"
 import Ps5 from "../assets/ps5.png"
 import Virtual from "../assets/Virtual-Reality.png"
 
+//Importation of additional Images 
+
+import Speaker1 from '../assets/speaker-Alt-1.jpeg'
+import Speaker2 from '../assets/speaker-Alt-2.jpeg'
+import Speaker3 from '../assets/speaker-Alt-3.jpeg'
+import Speaker4 from '../assets/speaker-Alt-4.jpeg'
+
 
 const products =
 [
@@ -16,7 +23,8 @@ const products =
         id: 1,
         Name: "Bluetooth speaker",
         price: '26',
-        image: Speaker,
+        image: Speaker, 
+        additionalImages: [Speaker1, Speaker2, Speaker3, Speaker4],
         cat: 'headphone',
         type: 'featured',
         description: 'Portable wireless speaker with rich stereo sound, 12-hour battery life, and water-resistant design. Perfect for outdoor activities and home entertainment.'
