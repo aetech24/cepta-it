@@ -37,7 +37,7 @@ const Cart = () => {
         {/* Title */}
         <h2 className="text-lg font-semibold relative pb-2 mb-4">
           Cart
-          <span className="absolute left-0 bottom-0 w-10 h-1 bg-red-600 rounded"></span>
+          <span className="absolute left-0 bottom-0 w-10 h-1 bg-[#EF0303]"></span>
         </h2>
         <p className="text-sm text-gray-600 mb-6">
           Check your items and proceed to provide your payment information.
@@ -48,7 +48,7 @@ const Cart = () => {
   {cart.map((item) => (
     <div
       key={item.id}
-      className="grid grid-cols-6 items-center p-4 border-b last:border-none"
+      className="grid grid-cols-3 gap-4 sm:grid-cols-6 lg:grid-cols-6 items-center p-4 border-b last:border-none"
     >
       {/* Item Image */}
       <div className="col-span-1">
@@ -64,36 +64,36 @@ const Cart = () => {
         <h2 className="font-medium truncate">
           {item.Name && item.Name.trim() ? item.Name : "Unnamed Item"}
         </h2>
-        <p className="text-gray-500">GH₵{parseFloat(item.price) || 0}</p>
+        <p className="text-gray-500">${parseFloat(item.price) || 0}</p>
       </div>
 
       {/* Quantity Control */}
-      <div className="col-span-1 flex items-center justify-center space-x-2">
+      <div className="col-span-1 grid grid-cols-3 items-center justify-center space-x-2 gap-4">
         <button
           onClick={() => updateQuantity(item.id, item.quantity - 1)}
           disabled={item.quantity <= 1}
-          className={`px-2 py-1 rounded-md border border-gray-300 transition-all duration-300 ${
+          className={`w-10 px-2 py-1 rounded-md border border-gray-300 transition-all duration-300 items-center justify-center ${
             item.quantity > 1
               ? "bg-gray-200 hover:bg-gray-300"
               : "bg-gray-100 cursor-not-allowed"
           }`}
         >
-          <FiMinus />
+          <FiMinus className="text-center" />
         </button>
         <span className="font-medium">{item.quantity}</span>
         <button
           onClick={() => updateQuantity(item.id, item.quantity + 1)}
           aria-label="Increase Quantity"
-          className="px-2 py-1 bg-gray-200 rounded-md border border-gray-300 hover:bg-gray-300 transition-all duration-300"
+          className="w-10 px-2 py-1 bg-gray-200 rounded-md border border-gray-300 hover:bg-gray-300 transition-all duration-300 items-center justify-center"
         >
-          <FiPlus />
+          <FiPlus className="text-center" />
         </button>
       </div>
 
       {/* Total Price */}
       <div className="col-span-1 text-center">
         <p className="font-medium">
-          GH₵{(parseFloat(item.price) * item.quantity || 0).toFixed(2)}
+          ${(parseFloat(item.price) * item.quantity || 0).toFixed(2)}
         </p>
       </div>
 
@@ -102,7 +102,7 @@ const Cart = () => {
         <button
           onClick={() => removeFromCart(item.id)}
           aria-label="Remove Item"
-          className="text-red-500 hover:text-red-700 transition-all duration-300"
+          className="text-[#EF0303] hover:text-[#00278c] transition-all duration-300"
         >
           <FiX />
         </button>
@@ -117,7 +117,7 @@ const Cart = () => {
           <h2 className="text-xl font-bold mb-4">Order Summary</h2>
           <div className="flex justify-between mb-2">
             <span>Subtotal</span>
-            <span>GH₵{totalValue.toFixed(2)}</span>
+            <span>${totalValue.toFixed(2)}</span>
           </div>
           <div className="flex justify-between mb-2">
             <span>Shipping Fee</span>
@@ -126,9 +126,9 @@ const Cart = () => {
           <hr className="my-4" />
           <div className="flex justify-between font-bold text-lg">
             <span>Total</span>
-            <span>GH₵{totalValue.toFixed(2)}</span>
+            <span>${totalValue.toFixed(2)}</span>
           </div>
-          <button className="w-full bg-red-500 text-white font-medium py-2 mt-4 rounded-md hover:bg-red-600">
+          <button className="w-full bg-[#EF0303] text-white font-medium py-2 mt-4 hover:bg-[#00278c]">
             Proceed to Checkout
           </button>
         </div>
