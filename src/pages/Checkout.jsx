@@ -4,8 +4,12 @@ import Headset from "../assets/headphone-white.png";
 import Gamepad from "../assets/gamepad.png";
 import Camera from "../assets/camera.png";
 import VisaLogo from "../assets/visa.png";
+import { useCart } from "../context/CartContext";
+
+
 
 const Checkout = () => {
+  const {cart, totalValue}= useCart();
   return (
     <div className="max-w-6xl mx-auto p-4 sm:p-6 space-y-8">
       {/* Breadcrumb */}
@@ -32,39 +36,27 @@ const Checkout = () => {
 
           {/* Products List */}
           <div className="space-y-4">
-            {[{
-              name: "Vray Park - VR Park",
-              price: 1200,
-              quantity: 2,
-              image: Headset,
-            }, {
-              name: "HAVIT HV-G92 Gamepad",
-              price: 1200,
-              quantity: 2,
-              image: Gamepad,
-            }, {
-              name: "Canon DSLR Camera",
-              price: 1200,
-              quantity: 2,
-              image: Camera,
-            }].map((product, index) => (
+            {cart.map((product) => (
               <div
-                key={index}
+                key={product.id}
                 className="flex items-center border-b border-gray-200 pb-4 last:border-b-0"
               >
                 <img
-                  src={product.image}
-                  alt={product.name}
+                  src={product.image || "/placeholder.png"}
+                  alt={product.Name || "Product"}
                   className="w-16 h-16 object-cover rounded-lg mr-4"
                 />
                 <div className="flex-1">
-                  <p className="font-medium text-gray-800">{product.name}</p>
+                  <p className="font-medium text-gray-800">{product.Name || "Unnamed Product"}</p>
                   <p className="text-sm text-gray-500">Qty: {product.quantity} Pcs</p>
                 </div>
-                <p className="font-medium text-gray-800">GH₵{product.price}</p>
+                <p className="font-medium text-gray-800">
+                  ${product.price ? (product.price * product.quantity).toFixed(2) : "0.00"}
+                </p>
               </div>
             ))}
           </div>
+          
 
           {/* Order Summary */}
           <div className="bg-white border border-gray-300 p-4 sm:p-6">
@@ -72,7 +64,7 @@ const Checkout = () => {
             <div className="space-y-2">
               <div className="flex justify-between">
                 <span>Subtotal</span>
-                <span>GH₵3600.00</span>
+                <span>${totalValue.toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
                 <span>Shipping Fee</span>
@@ -80,14 +72,15 @@ const Checkout = () => {
               </div>
               <div className="flex justify-between font-semibold text-lg border-t border-gray-200 pt-2">
                 <span>Total</span>
-                <span>GH₵3600.00</span>
+                <span>${totalValue.toFixed(2)}</span>
               </div>
             </div>
             <button className="w-full mt-4 bg-red-600 text-white font-semibold py-3 hover:bg-red-700 transition">
-              Pay GH₵3600.00
+              Pay ${totalValue.toFixed(2)}
             </button>
           </div>
         </div>
+        
 
         {/* Contact and Payment Details Section */}
         <div className="space-y-6">
@@ -171,7 +164,7 @@ const Checkout = () => {
             </form>
 
             {/* Payment Methods */}
-            <div className="mt-4">
+            <div className="mt-4 " >
               <h4 className="text-sm font-semibold mb-2">Payment Methods</h4>
               <div className="flex flex-col gap-4">
                 <label className="flex items-center gap-2">
