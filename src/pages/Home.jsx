@@ -60,14 +60,14 @@ const Home = () => {
 
         {/* Trending Products Section */}
         <div className='w-full flex flex-col px-4 md:px-14'>
-          <div className='flex flex-col md:flex-row justify-between items-center pt-12 md:pt-24 gap-4 md:gap-0'>
+          <div className='flex flex-row md:flex-row justify-between items-center pt-12 md:pt-24 gap-4 md:gap-2'>
             <div>
-              <h4 className='text-black text-2xl font-[400] text-center md:text-start relative'>
+              <h4 className='text-black lg:text-2xl text-sm font-[400] text-center md:text-start relative'>
                 Trending Products
-                <span className='block h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-1/2 md:left-0 -translate-x-1/2 md:translate-x-0 mt-1'></span>
+                <span className='block h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-0 md:left-0 translate-x-0 md:translate-x-0 mt-1'></span>
               </h4>
             </div>
-            <button onClick={() => navigate('/shop')} className='bg-none border-[1.4px] border-black text-black px-4 py-2 hover:bg-black hover:text-white transition-all duration-300'>
+            <button onClick={() => navigate('/shop')} className='bg-none border-[1.4px] border-black text-black px-4 py-2 hover:bg-black hover:text-white transition-all duration-300 lg:w-[124px] lg:h-[48px] w-[100px] h-[40px]'>
               View All
             </button>
           </div>
