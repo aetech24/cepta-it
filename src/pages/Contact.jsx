@@ -2,7 +2,8 @@ import { CiLocationOn } from 'react-icons/ci';
 import { IoIosArrowForward } from 'react-icons/io';
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 import { CiAt } from "react-icons/ci";
-
+import Accordion from '../components/Accordion';
+import faqImage from '../assets/FAQ.png';
 
 const Contact = () => {
   return (
@@ -96,12 +97,20 @@ const Contact = () => {
             <button type='submit' className='bg-[#EF0303] text-white text-[16px] font-[400] px-4 py-2 lg:w-[272px] lg:h-[48px] hover:bg-[#00278C] transition-all duration-300'>Send</button>
           </form>
         </div>
-        <div className='flex flex-col gap-4 mt-10 lg:w-[1240px] max-md:w-[100%] max-md:px-4 sm:w-[100%]'>
-            <div>
+        <div className='flex flex-col gap-4 mt-10 lg:w-[1240px] max-md:w-[100%] max-md:px-4 sm:w-[100%] '>
+            <div className=''>
                 <h4 className='text-black lg:text-2xl text-sm sm:text-2xl font-[400] text-center md:text-center relative mb-4'>
                     Frequently Asked Questions
-                    <span className='block h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-[100px] absolute top-full left-1/2 -translate-x-1/2 mt-1'></span>
+                    <span className='block h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-[100px] absolute top-[99%] left-1/2 -translate-x-1/2 mt-1'></span>
                 </h4>
+            </div>
+            <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
+                <div className='flex flex-col gap-2'>
+                    <Accordion />
+                </div>
+                <div className='flex items-center justify-center'>
+                    <img src={faqImage} alt='map' className='hidden md:hidden lg:block w-[100%] h-[100%]' />
+                </div>
             </div>
         </div>
       </div>

@@ -187,7 +187,7 @@ const Home = () => {
               <img
                 src={rightTopBanner}
                 alt='right-top-banner'
-                className='w-full max-w-[300px] md:max-w-none h-auto mx-auto absolute top-0 right-0 md:w-[200px]'
+                className='w-[150px] top-5 max-w-[300px] md:max-w-none h-auto mx-auto absolute right-0 md:w-[200px]'
               />
             </div>
 
@@ -207,7 +207,7 @@ const Home = () => {
               <img
                 src={rightBottomBanner}
                 alt='right-bottom-banner'
-                className='w-full max-w-[300px] md:max-w-none h-auto mx-auto absolute bottom-2 right-0 md:w-[250px]'
+                className='w-[170px] top-12 max-w-[300px] md:max-w-none h-auto mx-auto absolute bottom-2 right-0 md:w-[250px]'
               />
             </div>
           </div>
