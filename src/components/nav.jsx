@@ -171,7 +171,7 @@ const Nav = () => {
           <div 
             className={`${
               isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
-            } lg:hidden fixed top-0 left-0 w-full h-[calc(100vh-128px)] bg-white transform transition-transform duration-300 ease-in-out z-50`}
+            } lg:hidden fixed top-0 left-0 w-full h-[calc(55vh-128px)] md:h-[calc(50vh-128px)] bg-white transform transition-transform duration-300 ease-in-out z-50 border-b-2`}
             style={{ top: 'calc(88px + 40px)' }} // Height of header + announcement bar
           >
             <div className='h-full overflow-y-auto'>
