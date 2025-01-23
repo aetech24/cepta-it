@@ -1,6 +1,8 @@
 import { CiLocationOn } from 'react-icons/ci';
 import { IoIosArrowForward } from 'react-icons/io';
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import { CiAt } from "react-icons/ci";
+
 
 const Contact = () => {
   return (
@@ -76,23 +78,31 @@ const Contact = () => {
             <div className='flex flex-row gap-4 max-md:flex-col max-md:gap-4 lg:flex-row lg:gap-4 lg:w-[1240px]'>
                 <div className='flex flex-col gap-2'>
                 <label htmlFor='name' className='text-black text-[16px] font-[400]'>Name</label>
-                <input type='text' placeholder='Name' className='w-[200px] h-[40px] border border-[#00278C] rounded-md p-2 max-md:w-[100%] max-md:px-4 lg:w-[610px] lg:h-[40px]' />
+                <input type='text' placeholder='Name'className='w-[200px] h-[40px] border border-[#999999] p-2 max-md:w-[100%] max-md:px-4 lg:w-[610px] lg:h-[40px]' />
                 </div>
                 <div className='flex flex-col gap-2'>
                 <label htmlFor='email' className='text-black text-[16px] font-[400]'>Email</label>
-                <input type='email' placeholder='Email' className='w-[200px] h-[40px] border border-[#00278C] rounded-md p-2 max-md:w-[100%] max-md:px-4 lg:w-[610px] lg:h-[40px]' />
+                <input type='email' placeholder='Email' className='w-[200px] h-[40px] border border-[#999999] p-2 max-md:w-[100%] max-md:px-4 lg:w-[610px] lg:h-[40px]' />
                 </div>
             </div>
             <div className='flex flex-col gap-2 lg:w-[1240px]'>
                 <label htmlFor='phone' className='text-black text-[16px] font-[400]'>Phone Number</label>
-                <input type="number" name="phone" id="phone" placeholder='Phone Number' className='w-[400px] h-[40px] border border-[#00278C] rounded-md p-2 max-md:w-[100%] max-md:px-4 lg:w-[1240px] lg:h-[40px]' />
+                <input type="number" name="phone" id="phone" placeholder='Phone Number' className='w-[400px] h-[40px] border border-[#999999] p-2 max-md:w-[100%] max-md:px-4 lg:w-[1240px] lg:h-[40px]' />
             </div>
             <div className='flex flex-col gap-2 lg:w-[1240px]'>  
                 <label htmlFor='message' className='text-black text-[16px] font-[400] items-start justify-start'>Message</label>
-                <textarea placeholder='Message' className='w-[400px] h-[100px] border border-[#00278C] rounded-md p-2 max-md:w-[100%] max-md:h-[100px] max-md:px-4 lg:w-[1240px] lg:h-[100px]'></textarea>
+                <textarea placeholder='Message' className='w-[400px] h-[100px] border border-[#999999] p-2 max-md:w-[100%] max-md:h-[100px] max-md:px-4 lg:w-[1240px] lg:h-[100px]'></textarea>
             </div>
             <button type='submit' className='bg-[#EF0303] text-white text-[16px] font-[400] px-4 py-2 lg:w-[272px] lg:h-[48px] hover:bg-[#00278C] transition-all duration-300'>Send</button>
           </form>
+        </div>
+        <div className='flex flex-col gap-4 mt-10 lg:w-[1240px] max-md:w-[100%] max-md:px-4 sm:w-[100%]'>
+            <div>
+                <h4 className='text-black lg:text-2xl text-sm sm:text-2xl font-[400] text-center md:text-center relative mb-4'>
+                    Frequently Asked Questions
+                    <span className='block h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-[100px] absolute top-full left-1/2 -translate-x-1/2 mt-1'></span>
+                </h4>
+            </div>
         </div>
       </div>
     </main>

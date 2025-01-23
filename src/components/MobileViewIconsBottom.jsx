@@ -1,6 +1,6 @@
 import React from 'react'
 import { AiOutlineHeart, AiOutlineShoppingCart, AiOutlineUser } from 'react-icons/ai'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import { SignedIn, SignedOut, UserButton, SignInButton } from '@clerk/clerk-react'
 import { useNavigate } from 'react-router-dom'
 
