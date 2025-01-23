@@ -10,9 +10,10 @@ import {
 import { GiSettingsKnobs } from 'react-icons/gi';
 import ProductGrid from '../components/ProductGrid';
 import { useCart } from '../context/CartContext';
+import { useNavigate } from 'react-router-dom';
 
 const Shop = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [brandFilter, setBrandFilter] = useState('');
   const [priceFilter, setPriceFilter] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
@@ -47,9 +48,10 @@ const Shop = () => {
   // Handle pagination
   const totalPages = Math.ceil(filterProducts().length / itemsPerPage);
 
-  // const handleViewProduct = (productId) => {
-  //   navigate(`/product/${productId}`);
-  // };
+  // Navigate to the product details
+   const handleViewProduct = (product) => {
+     navigate(`/product/${product.id}`, {state: {product}});
+   };
 
    // Add to cart functionality
    //const addToCart = (product) => {
@@ -216,7 +218,7 @@ const Shop = () => {
 
           {/* Product Grid */}
           <div className='bg-white p-4 rounded-lg shadow-sm'>
-            <ProductGrid products={paginatedProducts} addToCart={addToCart} />
+            <ProductGrid products={paginatedProducts} addToCart={addToCart} viewProduct={handleViewProduct}/>
           </div>
         </main>
       </div>

@@ -1,12 +1,11 @@
 import { FiMinus, FiPlus, FiX } from "react-icons/fi";
 import { useCart } from "../context/CartContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import { updateQuantity, removeItem, calculateSubtotal } from "../utils/cartUtils";
 
 const Cart = () => {
   const { cart, updateQuantity, removeFromCart, totalValue } = useCart();
-
- 
+  const navigate = useNavigate()
 
   // Handle empty cart scenario
   if (cart.length === 0) {
@@ -128,7 +127,9 @@ const Cart = () => {
             <span>Total</span>
             <span>${totalValue.toFixed(2)}</span>
           </div>
-          <button className="w-full bg-[#EF0303] text-white font-medium py-2 mt-4 hover:bg-[#00278c]">
+          <button 
+          onClick={()=> navigate("/checkout")}
+          className="w-full bg-[#EF0303] text-white font-medium py-2 mt-4 hover:bg-[#00278c]">
             Proceed to Checkout
           </button>
         </div>
