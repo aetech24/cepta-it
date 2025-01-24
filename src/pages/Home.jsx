@@ -274,7 +274,7 @@ const Home = () => {
               <div key={product.id} className='flex flex-col items-center bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow'>
                 <img src={product.image} alt={product.name} className='w-full h-48 object-contain mb-4' />
                 <h2 className='text-lg font-semibold mb-2'>{product.Name}</h2>
-                <p className='text-red-500 font-bold'>${product.price}</p>
+                <p className='text-[#EF0303] font-bold'>${product.price}</p>
               </div>
             ))}
           </div>

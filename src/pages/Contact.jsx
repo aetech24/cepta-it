@@ -93,6 +93,7 @@ const Contact = () => {
             <div className='flex flex-col gap-2 lg:w-[1240px]'>  
                 <label htmlFor='message' className='text-black text-[16px] font-[400] items-start justify-start'>Message</label>
                 <textarea placeholder='Message' className='w-[400px] h-[100px] border border-[#999999] p-2 max-md:w-[100%] max-md:h-[100px] max-md:px-4 lg:w-[1240px] lg:h-[100px]'></textarea>
+                <FaPhoneAlt className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
             </div>
             <button type='submit' className='bg-[#EF0303] text-white text-[16px] font-[400] px-4 py-2 lg:w-[272px] lg:h-[48px] hover:bg-[#00278C] transition-all duration-300'>Send</button>
           </form>

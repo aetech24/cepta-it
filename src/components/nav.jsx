@@ -78,7 +78,7 @@ const Nav = () => {
 
             {/* Mobile Menu Button */}
             <button 
-              className='lg:hidden p-2 text-[#232323] hover:text-blue-400'
+              className='lg:hidden p-2 text-[#232323] hover:text-[#00278C] '
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -87,16 +87,16 @@ const Nav = () => {
 
             {/* Desktop Navigation */}
             <div className='hidden lg:flex items-center space-x-6'>
-              <Link to='/' className='text-[#232323] hover:text-blue-400 transition-all duration-300'>
+              <Link to='/' className='text-[#232323] hover:text-[#00278C] transition-all duration-300'>
                 Home
               </Link>
-              <Link to='/shop' className='text-[#232323] hover:text-blue-400 transition-all duration-300'>
+              <Link to='/shop' className='text-[#232323] hover:text-[#00278C] transition-all duration-300'>
                 Shop
               </Link>
-              <Link to='/about' className='text-[#232323] hover:text-blue-400 transition-all duration-300'>
+              <Link to='/about' className='text-[#232323] hover:text-[#00278C] transition-all duration-300'>
                 About
               </Link>
-              <Link to='/contact' className='text-[#232323] hover:text-blue-400 transition-all duration-300'>
+              <Link to='/contact' className='text-[#232323] hover:text-[#00278C] transition-all duration-300'>
                 Contact
               </Link>
             </div>
@@ -147,10 +147,10 @@ const Nav = () => {
               </div>
               
               <div className='flex items-center space-x-4'>
-                <Link to='/wishlist' className='text-[#232323] hover:text-blue-400 text-2xl transition-all duration-300'>
+                <Link to='/wishlist' className='text-[#232323] hover:text-[#00278C] text-2xl transition-all duration-300'>
                   <AiOutlineHeart aria-label="Wishlist" />
                 </Link>
-                <Link to='/cart' className='text-[#232323] hover:text-blue-400 text-2xl transition-all duration-300'>
+                <Link to='/cart' className='text-[#232323] hover:text-[#00278C] text-2xl transition-all duration-300'>
                   <AiOutlineShoppingCart aria-label="Shopping cart" />
                 </Link>
                 <SignedIn>
@@ -158,7 +158,7 @@ const Nav = () => {
                 </SignedIn>
                 <SignedOut>
                   <SignInButton>
-                    <button className='text-[#232323] hover:text-blue-400 text-2xl transition-all duration-300'>
+                    <button className='text-[#232323] hover:text-[#00278C] text-2xl transition-all duration-300'>
                       <AiOutlineUser aria-label="Sign in" />
                     </button>
                   </SignInButton>
@@ -179,28 +179,28 @@ const Nav = () => {
                 <div className='space-y-4'>
                   <Link 
                     to='/' 
-                    className='block text-[#232323] hover:text-blue-400 transition-all duration-300'
+                    className='block text-[#232323] hover:text-[#00278C] transition-all duration-300'
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Home
                   </Link>
                   <Link 
                     to='/shop' 
-                    className='block text-[#232323] hover:text-blue-400 transition-all duration-300'
+                    className='block text-[#232323] hover:text-[#00278C] transition-all duration-300'
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Shop
                   </Link>
                   <Link 
                     to='/about' 
-                    className='block text-[#232323] hover:text-blue-400 transition-all duration-300'
+                    className='block text-[#232323] hover:text-[#00278C] transition-all duration-300'
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     About
                   </Link>
                   <Link 
                     to='/contact' 
-                    className='block text-[#232323] hover:text-blue-400 transition-all duration-300'
+                    className='block text-[#232323] hover:text-[#00278C] transition-all duration-300'
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Contact
@@ -230,14 +230,14 @@ const Nav = () => {
                 <div className='flex justify-center space-x-6 pt-4 border-t'>
                   <Link 
                     to='/wishlist' 
-                    className='text-[#232323] hover:text-blue-400 text-2xl transition-all duration-300'
+                    className='text-[#232323] hover:text-[#00278C] text-2xl transition-all duration-300'
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <AiOutlineHeart aria-label="Wishlist" />
                   </Link>
                   <Link 
                     to='/cart' 
-                    className='text-[#232323] hover:text-blue-400 text-2xl transition-all duration-300'
+                    className='text-[#232323] hover:text-[#00278C] text-2xl transition-all duration-300'
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <AiOutlineShoppingCart aria-label="Shopping cart" />
@@ -248,7 +248,7 @@ const Nav = () => {
                   <SignedOut>
                     <SignInButton>
                       <button 
-                        className='text-[#232323] hover:text-blue-400 text-2xl transition-all duration-300'
+                        className='text-[#232323] hover:text-[#00278C] text-2xl transition-all duration-300'
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         <AiOutlineUser aria-label="Sign in" />
