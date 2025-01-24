@@ -57,6 +57,7 @@ ProductGrid.propTypes = {
     })
   ).isRequired,
   addToCart: PropTypes.func.isRequired,
+  viewProduct: PropTypes.func,
 };
 
 export default ProductGrid;

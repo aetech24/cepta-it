@@ -30,7 +30,13 @@ const newProducts = products.filter((product) => product.type === 'new');
 const Home = () => {
   const navigate = useNavigate();
   const [category, setCategory] = useState('featured');
-  const displayProducts = products.filter(product => product.type === category);
+  const displayProducts = products.filter(
+    (product) => product.type === category
+  );
+
+  const handleViewProduct = (product) => {
+    navigate(`/product/${product.id}`, { state: { product } });
+  };
 
   return (
     <main className='min-h-screen py-8 w-full mx-auto'>
@@ -38,13 +44,16 @@ const Home = () => {
         {/* Hero Section */}
         <div className='w-full bg-black px-4 md:px-36 pt-12 md:pt-24'>
           <div className='flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto'>
-            <div className='flex flex-col justify-center items-start gap-4 text-center md:text-left w-full md:w-auto'>
+            <div className='flex flex-col justify-center items-start gap-4 text-center md:text-left w-full md:w-auto md:mb-6'>
               <p className='text-white text-sm'>The All New</p>
               <h2 className='text-white text-3xl md:text-4xl font-bold tracking-wide leading-10 mb-4 md:mb-0'>
                 Apple <br />
                 iPhone 15 Pro Max
               </h2>
-              <button onClick={() => navigate('/shop')} className='bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 text-white px-4 py-2 w-full md:w-auto'>
+              <button
+                onClick={() => navigate('/shop')}
+                className='bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 text-white px-4 py-2 w-full md:w-auto'
+              >
                 Shop Now
               </button>
             </div>
@@ -52,7 +61,7 @@ const Home = () => {
               <img
                 src={heroBanner}
                 alt='hero-banner'
-                className='w-full max-w-[300px] md:max-w-[452.96px] h-auto mx-auto '
+                className='w-full max-w-[300px] md:max-w-[452.96px] h-auto mx-auto md:mb-0 md:mt-10'
               />
             </div>
           </div>
@@ -67,17 +76,31 @@ const Home = () => {
                 <span className='block h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-0 md:left-0 translate-x-0 md:translate-x-0 mt-1'></span>
               </h4>
             </div>
-            <button onClick={() => navigate('/shop')} className='bg-none border-[1.4px] border-black text-black px-4 py-2 hover:bg-black hover:text-white transition-all duration-300 lg:w-[124px] lg:h-[48px] w-[100px] h-[40px]'>
+            <button
+              onClick={() => navigate('/shop')}
+              className='bg-none border-[1.4px] border-black text-black px-4 py-2 hover:bg-black hover:text-white transition-all duration-300 lg:w-[124px] lg:h-[48px] w-[100px] h-[40px]'
+            >
               View All
             </button>
           </div>
           <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 pt-12 md:pt-24'>
             {trendingProducts.map((product) => (
-              <div key={product.id} className='flex flex-col items-center bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow'>
-                <img src={product.image} alt={product.name} className='w-full h-48 object-contain mb-4' />
-                <h2 className='text-lg font-semibold mb-2 text-center'>{product.Name}</h2>
+              <Link
+                to={`/product/${product.id}`}
+                key={product.id}
+                viewProduct={handleViewProduct}
+                className='flex flex-col items-center bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow'
+              >
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className='w-full h-48 object-contain mb-4'
+                />
+                <h2 className='text-lg font-semibold mb-2 text-center'>
+                  {product.Name}
+                </h2>
                 <p className='text-red-500 font-bold'>${product.price}</p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -85,17 +108,24 @@ const Home = () => {
         {/* Apple Deals Section */}
         <div className='bg-[#E6EAF5] mt-10 px-4 md:px-36'>
           <div className='flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto mb-auto pt-12 md:pt-24'>
-            <div className='flex flex-col justify-center items-center md:items-start gap-4 text-center md:text-left'>
+            <div className='flex flex-col justify-center items-center md:items-start gap-4 text-center md:text-left md:mb-4'>
               <p className='text-[#0E0F0F] text-sm'>Apple Deals</p>
               <h2 className='text-[#0E0F0F] text-3xl md:text-4xl font-bold tracking-wide leading-10 mb-4 md:mb-0'>
                 Flat $10 <br /> Over All iPhones
               </h2>
-              <button onClick={() => navigate('/shop')} className='bg-[#EF0303] text-white px-4 py-2 hover:bg-[#00278C] transition-all duration-300 w-full md:w-auto'>
+              <button
+                onClick={() => navigate('/shop')}
+                className='bg-[#EF0303] text-white px-4 py-2 hover:bg-[#00278C] transition-all duration-300 w-full md:w-auto'
+              >
                 Shop Now
               </button>
             </div>
             <div className='mt-8 md:mt-0'>
-              <img src={heroBanner} alt='hero-banner' className='w-full max-w-[300px] md:max-w-none h-auto mx-auto' />
+              <img
+                src={heroBanner}
+                alt='hero-banner'
+                className='w-full max-w-[300px] md:max-w-none h-auto mx-auto'
+              />
             </div>
           </div>
         </div>
@@ -108,14 +138,37 @@ const Home = () => {
           </h4>
           <div className='flex flex-row md:grid md:grid-cols-3 lg:grid-cols-6 gap-4 overflow-x-auto md:overflow-x-visible pb-4 md:pb-0'>
             {[
-              { icon: <SlScreenSmartphone className='w-[56px] h-[56px]'/>, name: 'Smartphones' },
-              { icon: <HiOutlineComputerDesktop className='w-[56px] h-[56px]'/>, name: 'Computers' },
-              { icon: <BsSmartwatch className='w-[56px] h-[56px]'/>, name: 'Smartwatches' },
-              { icon: <AiOutlineCamera className='w-[56px] h-[56px]'/>, name: 'Cameras' },
-              { icon: <CiHeadphones className='w-[56px] h-[56px]'/>, name: 'Headphones' },
-              { icon: <LuGamepad className='w-[56px] h-[56px]'/>, name: 'Gaming' }
+              {
+                icon: <SlScreenSmartphone className='w-[56px] h-[56px]' />,
+                name: 'Smartphones',
+              },
+              {
+                icon: (
+                  <HiOutlineComputerDesktop className='w-[56px] h-[56px]' />
+                ),
+                name: 'Computers',
+              },
+              {
+                icon: <BsSmartwatch className='w-[56px] h-[56px]' />,
+                name: 'Smartwatches',
+              },
+              {
+                icon: <AiOutlineCamera className='w-[56px] h-[56px]' />,
+                name: 'Cameras',
+              },
+              {
+                icon: <CiHeadphones className='w-[56px] h-[56px]' />,
+                name: 'Headphones',
+              },
+              {
+                icon: <LuGamepad className='w-[56px] h-[56px]' />,
+                name: 'Gaming',
+              },
             ].map((category, index) => (
-              <div key={index} className='min-w-[170px] h-[145px] bg-none rounded-[4px] border-[1px] border-black flex flex-col justify-center items-center hover:bg-black group hover:text-white transition-all duration-300 gap-3'>
+              <div
+                key={index}
+                className='min-w-[170px] h-[145px] bg-none rounded-[4px] border-[1px] border-black flex flex-col justify-center items-center hover:bg-black group hover:text-white transition-all duration-300 gap-3'
+              >
                 <div className='text-black font-light w-[56px] h-[56px] group-hover:text-white'>
                   {category.icon}
                 </div>
@@ -136,16 +189,30 @@ const Home = () => {
                 <span className='block h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-1/2 md:left-0 -translate-x-1/2 md:translate-x-0 mt-1'></span>
               </h4>
             </div>
-            <button onClick={() => navigate('/shop')} className='bg-none border-[1.4px] border-black text-black px-4 py-2 hover:bg-black hover:text-white transition-all duration-300'>
+            <button
+              onClick={() => navigate('/shop')}
+              className='bg-none border-[1.4px] border-black text-black px-4 py-2 hover:bg-black hover:text-white transition-all duration-300'
+            >
               View All
             </button>
           </div>
           <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 pt-12'>
             {newProducts.map((product) => (
-              <div key={product.id} className='flex flex-col items-center bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow'>
-                <img src={product.image} alt={product.name} className='w-full h-48 object-contain mb-4' />
-                <h2 className='text-lg font-semibold mb-2 text-center'>{product.Name}</h2>
-                <p className='text-red-500 font-bold'>${product.price}</p>
+              <div
+                key={product.id}
+                className='flex flex-col items-center bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow'
+              >
+                <Link to={`/product/${product.id}`} key={product.id} viewProduct={handleViewProduct}>
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className='w-full h-48 object-contain mb-4'
+                  />
+                  <h2 className='text-lg font-semibold mb-2 text-center'>
+                    {product.Name}
+                  </h2>
+                  <p className='text-red-500 font-bold'>${product.price}</p>
+                </Link>
               </div>
             ))}
           </div>
@@ -162,11 +229,18 @@ const Home = () => {
               <p className='text-white text-sm'>
                 New Products coming out on sale
               </p>
-              <button onClick={() => navigate('/shop')} className='bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 text-white px-4 py-2'>
+              <button
+                onClick={() => navigate('/shop')}
+                className='bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 text-white px-4 py-2'
+              >
                 Shop Now
               </button>
             </div>
-            <img src={leftBanner} alt="PS5 Banner" className='absolute top-0 right-0 h-full w-auto object-cover' />
+            <img
+              src={leftBanner}
+              alt='PS5 Banner'
+              className='absolute top-0 right-0 h-full w-auto object-cover'
+            />
           </div>
 
           {/* Right Banners */}
@@ -180,7 +254,10 @@ const Home = () => {
                 <p className='text-[#0E0F0F] text-sm'>
                   Featured Products that give you another vibe
                 </p>
-                <button onClick={() => navigate('/shop')} className='bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 text-white px-4 py-2'>
+                <button
+                  onClick={() => navigate('/shop')}
+                  className='bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 text-white px-4 py-2'
+                >
                   Shop Now
                 </button>
               </div>
@@ -200,7 +277,10 @@ const Home = () => {
                 <p className='text-white text-sm'>
                   Browse our top products categories
                 </p>
-                <button onClick={() => navigate('/shop')} className='bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 text-white px-4 py-2'>
+                <button
+                  onClick={() => navigate('/shop')}
+                  className='bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 text-white px-4 py-2'
+                >
                   Shop Now
                 </button>
               </div>
@@ -249,30 +329,82 @@ const Home = () => {
         <div className='w-full flex flex-col pb-5 mx-auto'>
           <div className='flex flex-row justify-between items-center pt-24 mx-auto w-[100%] px-14'>
             <div className='flex flex-row gap-8 justify-center items-center mx-auto'>
-              <Link onClick={() => setCategory('featured')} className={`cursor-pointer text-gray-500 hover:text-black transition-all duration-300 group ${category === 'featured' ? 'text-black' : ''}`}>
-                <h4 className={`lg:text-2xl md:text-2xl text-lg font-[400] text-start relative ${category === 'featured' ? 'text-black' : 'text-gray-500'}`}>
+              <Link
+                onClick={() => setCategory('featured')}
+                className={`cursor-pointer text-gray-500 hover:text-black transition-all duration-300 group ${
+                  category === 'featured' ? 'text-black' : ''
+                }`}
+              >
+                <h4
+                  className={`lg:text-2xl md:text-2xl text-lg font-[400] text-start relative ${
+                    category === 'featured' ? 'text-black' : 'text-gray-500'
+                  }`}
+                >
                   Featured Products
-                  <span className={`h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-0 mt-1 font-[2px] drop-shadow-xl ${category === 'featured' ? 'block text-black' : 'hidden group-hover:block'}`}></span>
+                  <span
+                    className={`h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-0 mt-1 font-[2px] drop-shadow-xl ${
+                      category === 'featured'
+                        ? 'block text-black'
+                        : 'hidden group-hover:block'
+                    }`}
+                  ></span>
                 </h4>
               </Link>
-              <Link onClick={() => setCategory('top')} className={` cursor-pointer text-gray-500 hover:text-black transition-all duration-300 group ${category === 'top' ? 'text-black' : ''}`}>
-                <h4 className={`lg:text-2xl md:text-2xl text-lg font-[400] text-start relative ${category === 'top' ? 'text-black' : 'text-gray-500'}`}>
+              <Link
+                onClick={() => setCategory('top')}
+                className={` cursor-pointer text-gray-500 hover:text-black transition-all duration-300 group ${
+                  category === 'top' ? 'text-black' : ''
+                }`}
+              >
+                <h4
+                  className={`lg:text-2xl md:text-2xl text-lg font-[400] text-start relative ${
+                    category === 'top' ? 'text-black' : 'text-gray-500'
+                  }`}
+                >
                   Top Products
-                  <span className={`h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-0 mt-1 font-[2px] drop-shadow-xl ${category === 'top' ? 'block text-black' : 'hidden group-hover:block'}`}></span>
+                  <span
+                    className={`h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-0 mt-1 font-[2px] drop-shadow-xl ${
+                      category === 'top'
+                        ? 'block text-black'
+                        : 'hidden group-hover:block'
+                    }`}
+                  ></span>
                 </h4>
               </Link>
-              <Link onClick={() => setCategory('top-selling')} className={`cursor-pointer text-gray-500 hover:text-black transition-all duration-300 group ${category === 'top-selling' ? 'text-black' : ''}`}>
-                <h4 className={`lg:text-2xl md:text-2xl text-lg font-[400] text-start relative ${category === 'top-selling' ? 'text-black' : 'text-gray-500'}`}>
+              <Link
+                onClick={() => setCategory('top-selling')}
+                className={`cursor-pointer text-gray-500 hover:text-black transition-all duration-300 group ${
+                  category === 'top-selling' ? 'text-black' : ''
+                }`}
+              >
+                <h4
+                  className={`lg:text-2xl md:text-2xl text-lg font-[400] text-start relative ${
+                    category === 'top-selling' ? 'text-black' : 'text-gray-500'
+                  }`}
+                >
                   Top Selling Products
-                  <span className={`h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-0 mt-1 font-[2px] drop-shadow-xl ${category === 'top-selling' ? 'block text-black' : 'hidden group-hover:block'}`}></span>
+                  <span
+                    className={`h-[2px] bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 w-1/2 absolute top-full left-0 mt-1 font-[2px] drop-shadow-xl ${
+                      category === 'top-selling'
+                        ? 'block text-black'
+                        : 'hidden group-hover:block'
+                    }`}
+                  ></span>
                 </h4>
               </Link>
             </div>
           </div>
           <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 pt-24 mx-auto w-[100%] px-14'>
             {displayProducts.map((product) => (
-              <div key={product.id} className='flex flex-col items-center bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow'>
-                <img src={product.image} alt={product.name} className='w-full h-48 object-contain mb-4' />
+              <div
+                key={product.id}
+                className='flex flex-col items-center bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow'
+              >
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className='w-full h-48 object-contain mb-4'
+                />
                 <h2 className='text-lg font-semibold mb-2'>{product.Name}</h2>
                 <p className='text-[#EF0303] font-bold'>${product.price}</p>
               </div>
