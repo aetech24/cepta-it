@@ -2,14 +2,32 @@ import { Link } from 'react-router-dom';
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 import { IoMailOutline, IoCallOutline, IoLocationOutline } from 'react-icons/io5';
 import logo from '../assets/ceptalogo 1.jpg';
+// import { sendEmail } from '../utils/emailService';
+// import { useState } from 'react';
+// import { useForm } from 'react-hook-form';
 
 const Footer = () => {
-  const handleNewsletterSubmit = (e) => {
-    e.preventDefault();
-    // Add newsletter subscription logic here
-    console.log('Newsletter subscription submitted');
-  };
+  // const { register, handleSubmit, formState: { errors } } = useForm();
+  // const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // const handleNewsletterSubmit = async (e) => {
+  //   e.preventDefault();
+  //   if (!email || !/\S+@\S+\.\S+/.test(email)) {
+  //     alert('Please enter a valid email address');
+  //     return;
+  //   }
+  //   setIsSubmitting(true);
+  //   try {
+  //     await sendEmail(email); // Assuming sendEmail is an async function
+  //     alert('Newsletter subscription submitted successfully!');
+  //   } catch (error) {
+  //     console.error('Error submitting newsletter subscription:', error);
+  //     alert('An error occurred. Please try again later.');
+  //   } finally {
+  //     setIsSubmitting(false);
+  //   }
+  // };
+  
   return (
     <footer className='bg-[#000000] text-white w-full'>
       {/* Main Footer Content */}
@@ -104,18 +122,19 @@ const Footer = () => {
           <div>
             <h3 className='text-lg font-semibold mb-4 text-white'>Newsletter</h3>
             <p className='text-gray-400 mb-4'>Subscribe to our newsletter for updates and exclusive offers.</p>
-            <form onSubmit={handleNewsletterSubmit} className='space-y-3'>
+            <form onSubmit='' className='space-y-3'>
               <div className='relative'>
                 <input
                   type='email'
                   placeholder='Enter your email'
-                  className='w-full px-4 py-2 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-[#EF0303]'
+                  className='w-full px-4 py-2 bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-[#EF0303]'
                   required
                 />
               </div>
               <button
                 type='submit'
-                className='w-full px-4 py-2 bg-[#EF0303] text-white rounded-lg hover:bg-[#00278C] transition-colors duration-300'
+                onClick=''
+                className='w-full px-4 py-2 bg-[#EF0303] text-white hover:bg-[#00278C] transition-colors duration-300'
               >
                 Subscribe
               </button>

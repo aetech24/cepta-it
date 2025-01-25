@@ -1,8 +1,8 @@
 import React from "react";
 import { FaCreditCard, FaUser } from "react-icons/fa"; 
-import Headset from "../assets/headphone-white.png";
-import Gamepad from "../assets/gamepad.png";
-import Camera from "../assets/camera.png";
+// import Headset from "../assets/headphone-white.png";
+// import Gamepad from "../assets/gamepad.png";
+// import Camera from "../assets/camera.png";
 import VisaLogo from "../assets/visa.png";
 import { useCart } from "../context/CartContext";
 
@@ -23,10 +23,10 @@ const Checkout = () => {
         {/* Products Section */}
         <div className="space-y-6">
           {/* Your Products Header */}
-          <div>
-            <h2 className="text-lg font-semibold relative pb-2">
+          <div className="flex flex-col mb-4">
+            <h2 className="text-lg font-semibold relative mb-3">
               Your Products
-              <span className="absolute left-0 bottom-0 w-10 h-1 bg-red-600 rounded"></span>
+              <span className="absolute left-0 bottom-0 w-2/12 h-1 bg-[#EF0303] rounded"></span>
             </h2>
             <p className="text-sm text-gray-600">
               Check your items and proceed to provide your <br />
@@ -75,7 +75,7 @@ const Checkout = () => {
                 <span>${totalValue.toFixed(2)}</span>
               </div>
             </div>
-            <button className="w-full mt-4 bg-red-600 text-white font-semibold py-3 hover:bg-red-700 transition">
+            <button className="w-full mt-4 bg-[#EF0303] text-white font-semibold py-3 hover:bg-[#00278C] transition">
               Pay ${totalValue.toFixed(2)}
             </button>
           </div>
@@ -84,10 +84,10 @@ const Checkout = () => {
 
         {/* Contact and Payment Details Section */}
         <div className="space-y-6">
-          <div>
-            <h2 className="text-lg font-semibold relative pb-2">
+          <div className="flex flex-col mb-4">
+            <h2 className="text-lg font-semibold relative mb-3">
               Contact Details
-              <span className="absolute left-0 bottom-0 w-10 h-1 bg-red-600 rounded"></span>
+              <span className="absolute left-0 bottom-0 w-2/12 h-1 bg-[#EF0303] rounded"></span>
             </h2>
             <p className="text-sm text-gray-600">
               Complete your order by providing the rest of <br />
