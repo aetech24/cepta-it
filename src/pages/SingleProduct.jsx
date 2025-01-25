@@ -1,9 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { IoIosArrowForward} from 'react-icons/io';
+import { IoIosArrowBack, IoIosArrowForward, IoIosArrowRoundForward } from 'react-icons/io';
 import { useCart } from '../context/CartContext';
 import ProductGrid from '../components/ProductGrid';
 import products from '/src/constants/products';
+import { PiTruck } from 'react-icons/pi';
+import { FiRefreshCcw } from 'react-icons/fi';
+import { IoShareSocialOutline } from "react-icons/io5";
+import { FaHeart } from 'react-icons/fa';
 
 const SingleProduct = () => {
   const { state } = useLocation(); // Get product details from state
@@ -11,12 +15,17 @@ const SingleProduct = () => {
   const { addToCart } = useCart();
   const [activeTab, setActiveTab] = useState('details'); // Tab state
 
-  // Redirect to the shop page if no product is provided
+   // Redirect to the shop page if no product is provided
+   useEffect(() => {
+    if (!state || !state.product) {
+      navigate('/shop');
+    }
+  }, [state, navigate]);
+
+  // If no product exists, don't render anything until redirection happens
   if (!state || !state.product) {
-    navigate('/shop');
     return null;
   }
-
   const { product } = state; // Destructure product details
 
   // Get related products 
@@ -38,75 +47,105 @@ const SingleProduct = () => {
         <p className="text-[#EF0303] text-sm">{product.Name}</p>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-6">
-        {/* Product Image */}
-        <div className="w-full lg:w-1/2">
-          <div className="w-full h-auto rounded-lg shadow mb-4">
-            <img
-              src={product.image}
-              alt={product.Name}
-              className="w-full h-auto rounded-lg"
-            />
-          </div>
-          <div className="flex gap-2 justify-center">
-            {product.additionalImages?.map((img, index) => (
-              <img
-                key={index}
-                src={img}
-                alt={`Additional ${index}`}
-                className="w-20 h-20 object-cover rounded-lg cursor-pointer border border-gray-200"
-              />
-            ))}
-          </div>
-        </div>
+      <div className="flex flex-col lg:flex-row gap-8">
+  {/* Product Image Section */}
+  <div className="w-full lg:w-1/2">
+    {/* Main Image */}
+    <div className="w-full h-auto rounded-lg shadow mb-4">
+      <img
+        src={product.image}
+        alt={product.Name}
+        className="w-full h-auto rounded-lg"
+      />
+    </div>
+    {/* Thumbnail Images with Arrows */}
+    <div className="flex items-center gap-4 justify-center">
+      {/* Left Arrow */}
+      <button className="p-2 rounded-full bg-gray-200 hover:bg-gray-300">
+        <IoIosArrowBack className="w-6 h-6 text-gray-600" />
+      </button>
+      {/* Thumbnails */}
+      {product.additionalImages?.map((img, index) => (
+        <img
+          key={index}
+          src={img}
+          alt={`Additional ${index}`}
+          className="w-20 h-20 object-cover rounded-lg cursor-pointer border border-gray-200 hover:border-gray-400"
+        />
+      ))}
+      {/* Right Arrow */}
+      <button className="p-2 rounded-full bg-gray-200 hover:bg-gray-300">
+        <IoIosArrowForward className="w-6 h-6 text-gray-600" />
+      </button>
+    </div>
+  </div>
 
-        {/* Product Details */}
-        <div className="w-full lg:w-1/2">
-          <h1 className="text-2xl md:text-3xl font-semibold text-black">
-            {product.Name}
-          </h1>
-          <p className="text-gray-600 mt-2 mb-4">{product.description}</p>
-          <p className="text-[#EF0303] text-2xl font-bold mb-4">
-            GH₵{product.price}
-          </p>
-
-          <div className="mb-4">
-            <p className="text-sm text-gray-500">
-              ⭐ {product.rating} ({product.reviewsCount} customer reviews)
-            </p>
-          </div>
-
-          <div className="flex gap-4 items-center mb-6">
-            <input
-              type="number"
-              min="1"
-              defaultValue="1"
-              className="border border-gray-300 rounded p-2 w-16"
-            />
-            <button
-              onClick={() => addToCart(product)}
-              className="bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 text-white px-6 py-2 rounded flex items-center gap-2"
-            >
-              Add to Cart
-            </button>
-            <button
-              className="border border-gray-400 text-gray-600 px-6 py-2 rounded hover:bg-gray-100 flex items-center gap-2"
-            >
-              ❤️
-            </button>
-          </div>
-
-          <div className="flex items-center gap-4 text-gray-600 text-sm">
-            <p className="flex items-center gap-2">
-              🚚 Free Delivery
-            </p>
-            <p className="flex items-center gap-2">
-              🔄 Return Policy
-            </p>
-          </div>
-        </div>
-      </div>
-
+  {/* Product Details Section */}
+  <div className="w-full lg:w-1/2">
+    {/* Product Name */}
+    <h1 className="text-2xl md:text-3xl font-semibold text-black mb-2">
+      {product.Name}
+    </h1>
+    {/* Reviews */}
+    <p className="text-gray-600 text-sm mb-4">
+       {product.rating} ({product.reviewsCount} customer reviews)
+    </p>
+    {/* Price */}
+    <p className="text-[#EF0303] text-3xl font-bold mb-4">
+      GH₵{product.price}
+    </p>
+    {/* Lines around the description */}
+    <div className="border-t border-b border-gray-300 py-4 my-4">
+      <p className="text-gray-700 leading-6">
+        {product.description}
+      </p>
+    </div>
+    {/* Add to Cart & Actions */}
+    <div className="flex items-center gap-4 mb-6">
+      <input
+        type="number"
+        min="1"
+        defaultValue="1"
+        className="border border-gray-300 rounded p-2 w-16"
+      />
+      <button
+        onClick={() => addToCart(product)}
+        className="bg-[#EF0303] hover:bg-[#00278C] text-white px-6 py-2 rounded-lg flex items-center gap-2 transition-all duration-300"
+      >
+        Add to Cart
+      </button>
+      {/*  Heart Icon */}
+      <button className="flex items-center justify-center bg-[#EF0303] w-10 h-10 rounded-full border border-gray-300 hover:bg-[#00278C]">
+        <FaHeart className="text-white w-5 h-5" />
+      </button>
+      {/* Styled Share Icon */}
+      <button className="flex items-center justify-center w-10 h-10 rounded-full border border-gray-300 hover:bg-gray-100">
+        <IoShareSocialOutline className="text-gray-600 w-5 h-5" />
+      </button>
+    </div>
+    {/* Additional Details */}
+    <div className="flex items-center gap-8 text-gray-600 text-sm">
+      {/* Free Delivery */}
+      <p className="flex items-center gap-3">
+        <PiTruck className="w-6 h-6" />
+        <span>
+          <strong>Free Delivery</strong>
+          <br />
+          For orders over $150.00
+        </span>
+      </p>
+      {/* Return Policy */}
+      <p className="flex items-center gap-3">
+        <FiRefreshCcw className="w-6 h-6" />
+        <span>
+          <strong>Return Policy</strong>
+          <br />
+          Product eligible for return policy
+        </span>
+      </p>
+    </div>
+  </div>
+</div>
       {/* Additional Info (Tabs) */}
       <div className="mt-10">
         <div className="border-b border-gray-300 mb-4">
