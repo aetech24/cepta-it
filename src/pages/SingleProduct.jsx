@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { IoIosArrowForward } from 'react-icons/io';
+import { IoIosArrowForward} from 'react-icons/io';
 import { useCart } from '../context/CartContext';
 import ProductGrid from '../components/ProductGrid';
 import products from '/src/constants/products';
@@ -48,7 +48,7 @@ const SingleProduct = () => {
               className="w-full h-auto rounded-lg"
             />
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 justify-center">
             {product.additionalImages?.map((img, index) => (
               <img
                 key={index}
