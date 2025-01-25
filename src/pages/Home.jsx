@@ -34,9 +34,9 @@ const Home = () => {
     (product) => product.type === category
   );
 
-  const handleViewProduct = (product) => {
-    navigate(`/product/${product.id}`, { state: { product } });
-  };
+  //const handleViewProduct = (product) => {
+    //navigate(`/product/${product.id}`, { state: { product } });
+  //};
 
   return (
     <main className='min-h-screen py-8 w-full mx-auto'>
@@ -85,26 +85,27 @@ const Home = () => {
           </div>
           <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 pt-12 md:pt-24'>
             {trendingProducts.map((product) => (
-              <Link
-                to={`/product/${product.id}`}
+              <div
+                
                 key={product.id}
-                viewProduct={handleViewProduct}
+                onClick={()=> navigate(`/product/${product.id}`,{
+                  state: {product},
+                }
+
+                )}
                 className='flex flex-col items-center bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow'
               >
                 <img
                   src={product.image}
                   alt={product.Name}
-                  onClick={(e)=>{
-                    e.preventDefault();
-                    navigate('/shop')
-                  }}
-                  className='w-full h-48 object-contain mb-4'
+                  
+                  className='w-full h-48 object-contain mb-4 cursor-pointer'
                 />
                 <h2 className='text-lg font-semibold mb-2 text-center'>
                   {product.Name}
                 </h2>
                 <p className='text-red-500 font-bold'>${product.price}</p>
-              </Link>
+              </div>
             ))}
           </div>
         </div>
@@ -206,21 +207,24 @@ const Home = () => {
                 key={product.id}
                 className='flex flex-col items-center bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow'
               >
-                <Link to={`/product/${product.id}`} key={product.id} viewProduct={handleViewProduct}>
+                <div  
+                key={product.id} 
+                onClick={()=>navigate(`/product/${product.id}`, {
+                  state: {product}
+                }
+
+                )}>
+                  
                   <img
                     src={product.image}
                     alt={product.Name}
-                    onClick={(e)=>{
-                      e.preventDefault()
-                      navigate('/shop')
-                    }}
                     className='w-full h-48 object-contain mb-4 cursor-pointer'
                   />
                   <h2 className='text-lg font-semibold mb-2 text-center'>
                     {product.Name}
                   </h2>
                   <p className='text-red-500 font-bold'>${product.price}</p>
-                </Link>
+                </div>
               </div>
             ))}
           </div>
@@ -272,10 +276,11 @@ const Home = () => {
               <img
                 src={rightTopBanner}
                 alt='right-top-banner'
-                onClick={(e)=>{
-                  e.preventDefault();
-                  navigate('/shop')
-                }}
+                onClick={()=>navigate(`/product/${product.id}`,{
+                  state: {product}
+                }
+
+                )}
                 className='w-[150px] top-5 max-w-[300px] md:max-w-none h-auto mx-auto absolute right-0 md:w-[200px]'
               />
             </div>
@@ -299,10 +304,11 @@ const Home = () => {
               <img
                 src={rightBottomBanner}
                 alt='right-bottom-banner'
-                onClick={(e)=>{
-                  e.preventDefault();
-                  navigate('/shop')
-                }}
+                onClick={()=>navigate(`/product/${product.id}`,{
+                  state: {product}
+                }
+
+                )}
                 className='w-[170px] top-12 max-w-[300px] cursor-pointer md:max-w-none h-auto mx-auto absolute bottom-2 right-0 md:w-[250px]'
               />
             </div>
