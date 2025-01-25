@@ -51,7 +51,7 @@ const Home = () => {
                 iPhone 15 Pro Max
               </h2>
               <button
-                onClick={() => navigate('/shop')}
+                onClick={() => navigate('/singleproduct')}
                 className='bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 text-white px-4 py-2 w-full md:w-auto'
               >
                 Shop Now
@@ -93,7 +93,11 @@ const Home = () => {
               >
                 <img
                   src={product.image}
-                  alt={product.name}
+                  alt={product.Name}
+                  onClick={(e)=>{
+                    e.preventDefault();
+                    navigate('/shop')
+                  }}
                   className='w-full h-48 object-contain mb-4'
                 />
                 <h2 className='text-lg font-semibold mb-2 text-center'>
@@ -205,8 +209,12 @@ const Home = () => {
                 <Link to={`/product/${product.id}`} key={product.id} viewProduct={handleViewProduct}>
                   <img
                     src={product.image}
-                    alt={product.name}
-                    className='w-full h-48 object-contain mb-4'
+                    alt={product.Name}
+                    onClick={(e)=>{
+                      e.preventDefault()
+                      navigate('/shop')
+                    }}
+                    className='w-full h-48 object-contain mb-4 cursor-pointer'
                   />
                   <h2 className='text-lg font-semibold mb-2 text-center'>
                     {product.Name}
@@ -264,6 +272,10 @@ const Home = () => {
               <img
                 src={rightTopBanner}
                 alt='right-top-banner'
+                onClick={(e)=>{
+                  e.preventDefault();
+                  navigate('/shop')
+                }}
                 className='w-[150px] top-5 max-w-[300px] md:max-w-none h-auto mx-auto absolute right-0 md:w-[200px]'
               />
             </div>
@@ -287,7 +299,11 @@ const Home = () => {
               <img
                 src={rightBottomBanner}
                 alt='right-bottom-banner'
-                className='w-[170px] top-12 max-w-[300px] md:max-w-none h-auto mx-auto absolute bottom-2 right-0 md:w-[250px]'
+                onClick={(e)=>{
+                  e.preventDefault();
+                  navigate('/shop')
+                }}
+                className='w-[170px] top-12 max-w-[300px] cursor-pointer md:max-w-none h-auto mx-auto absolute bottom-2 right-0 md:w-[250px]'
               />
             </div>
           </div>
@@ -402,7 +418,7 @@ const Home = () => {
               >
                 <img
                   src={product.image}
-                  alt={product.name}
+                  alt={product.Name}
                   className='w-full h-48 object-contain mb-4'
                 />
                 <h2 className='text-lg font-semibold mb-2'>{product.Name}</h2>
