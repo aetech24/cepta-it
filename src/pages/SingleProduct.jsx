@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { IoIosArrowBack, IoIosArrowForward, IoIosArrowRoundForward } from 'react-icons/io';
+import { IoIosArrowBack, IoIosArrowForward} from 'react-icons/io';
 import { useCart } from '../context/CartContext';
 import ProductGrid from '../components/ProductGrid';
 import products from '/src/constants/products';
@@ -92,7 +92,7 @@ const SingleProduct = () => {
     </p>
     {/* Price */}
     <p className="text-[#EF0303] text-3xl font-bold mb-4">
-      GH₵{product.price}
+      ${product.price}
     </p>
     {/* Lines around the description */}
     <div className="border-t border-b border-gray-300 py-4 my-4">
@@ -106,21 +106,48 @@ const SingleProduct = () => {
         type="number"
         min="1"
         defaultValue="1"
-        className="border border-gray-300 rounded p-2 w-16"
+        className="border border-[#EF0303] p-2 w-16"
       />
       <button
         onClick={() => addToCart(product)}
-        className="bg-[#EF0303] hover:bg-[#00278C] text-white px-6 py-2 rounded-lg flex items-center gap-2 transition-all duration-300"
+        className="bg-[#EF0303] hover:bg-[#00278C] text-white px-6 py-2 flex items-center gap-2 transition-all duration-300"
       >
         Add to Cart
       </button>
       {/*  Heart Icon */}
-      <button className="flex items-center justify-center bg-[#EF0303] w-10 h-10 rounded-full border border-gray-300 hover:bg-[#00278C]">
+      <button className="flex items-center justify-center bg-[#EF0303] w-10 h-10 rounded-full hover:bg-[#00278C]">
         <FaHeart className="text-white w-5 h-5" />
       </button>
       {/* Styled Share Icon */}
-      <button className="flex items-center justify-center w-10 h-10 rounded-full border border-gray-300 hover:bg-gray-100">
-        <IoShareSocialOutline className="text-gray-600 w-5 h-5" />
+      <button 
+        onClick={() => {
+          const shareData = {
+            title: product.Name,
+            text: product.description,
+            url: window.location.href
+          };
+          
+          // native sharing 
+          if (navigator.share) {
+            navigator.share(shareData)
+              .catch(err => console.log('Error sharing:', err));
+          } else {
+            // Fallback to copy to clipboard
+            navigator.clipboard.writeText(window.location.href)
+              .then(() => {
+                alert('Link copied to clipboard!');
+              })
+              .catch(err => {
+                console.log('Error copying to clipboard:', err);
+                // Final fallback manually copy the URL
+                prompt('Copy this link to share:', window.location.href);
+              });
+          }
+        }}
+        className="flex items-center justify-center  hover:bg-gray-100"
+        title="Share this product"
+      >
+        <IoShareSocialOutline className=" text-6xl" />
       </button>
     </div>
     {/* Additional Details */}

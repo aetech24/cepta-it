@@ -35,7 +35,7 @@ const ProductGrid = ({ products, addToCart, viewProduct }) => {
           </div>
           <div className="p-4">
             <h3 className="font-bold text-base sm:text-lg truncate mb-1" title={product.Name}>{product.Name}</h3>
-            <p className="text-red-500 font-semibold text-lg sm:text-xl">${parseFloat(product.price).toFixed(2)}</p>
+            <p className="text-[#EF0303] font-semibold text-lg sm:text-xl">${parseFloat(product.price).toFixed(2)}</p>
             <div className="flex items-center mt-2">
               <span className="text-yellow-500 text-sm">{product.rating}</span>
               <span className="ml-2 text-gray-400 text-sm">({product.reviewsCount} customer reviews)</span>

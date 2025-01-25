@@ -12,6 +12,8 @@ import products from '../constants/products';
 import leftBanner from '../assets/ps5-banner.png';
 import rightTopBanner from '../assets/laptop-banner.png';
 import rightBottomBanner from '../assets/jbl-banner.png';
+import { FaHeart, FaShoppingCart } from 'react-icons/fa';
+import { useCart } from '../context/CartContext';
 import {
   PiTruck,
   PiHandCoinsThin,
@@ -33,10 +35,8 @@ const Home = () => {
   const displayProducts = products.filter(
     (product) => product.type === category
   );
+  const { addToCart } = useCart();
 
-  //const handleViewProduct = (product) => {
-    //navigate(`/product/${product.id}`, { state: { product } });
-  //};
 
   return (
     <main className='min-h-screen py-8 w-full mx-auto'>
@@ -51,7 +51,9 @@ const Home = () => {
                 iPhone 15 Pro Max
               </h2>
               <button
-                onClick={() => navigate('/singleproduct')}
+                onClick={() => navigate(`/product/${products[5].id}`, {
+                  state: { product: products[5] }
+                })}
                 className='bg-[#EF0303] hover:bg-[#00278C] transition-all duration-300 text-white px-4 py-2 w-full md:w-auto'
               >
                 Shop Now
@@ -85,26 +87,46 @@ const Home = () => {
           </div>
           <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 pt-12 md:pt-24'>
             {trendingProducts.map((product) => (
-              <div
-                
-                key={product.id}
-                onClick={()=> navigate(`/product/${product.id}`,{
-                  state: {product},
-                }
-
-                )}
-                className='flex flex-col items-center bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow'
-              >
-                <img
-                  src={product.image}
-                  alt={product.Name}
+              <div key={product.id} className="flex flex-col">
+                <div
                   
-                  className='w-full h-48 object-contain mb-4 cursor-pointer'
-                />
-                <h2 className='text-lg font-semibold mb-2 text-center'>
-                  {product.Name}
-                </h2>
-                <p className='text-red-500 font-bold'>${product.price}</p>
+                  className='relative aspect-square overflow-hidden rounded-t-lg bg-gray-100'
+                >
+                  <img
+                  onClick={()=> navigate(`/product/${product.id}`,{
+                    state: {product},
+                  })}
+                    src={product.image}
+                    alt={product.Name}
+                    className='w-full h-full object-contain bg-[#E6EAF5] p-4 transition-transform duration-300 hover:scale-105'
+                  />
+                  <div className="absolute top-2 right-2 flex flex-col gap-2">
+                    <button 
+                      className="p-2 bg-white rounded-full shadow hover:shadow-md hover:bg-[#EF0303] hover:text-white transition-all duration-300 group"
+                      aria-label="Add to wishlist"
+                    >
+                      <FaHeart className="text-lg text-[#00278c] group-hover:text-white transition duration-300" />
+                    </button>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation(); // Prevent navigation
+                        addToCart(product);
+                      }}
+                      className="p-2 bg-white rounded-full shadow hover:shadow-md hover:bg-[#00278c] hover:text-white transition-all duration-300 group"
+                      aria-label="Add to cart"
+                    >
+                      <FaShoppingCart className="text-lg text-[#00278c] group-hover:text-white transition duration-300" />
+                    </button>
+                  </div>
+                </div>
+                <div className="p-4">
+                  <h3 className="font-bold text-base sm:text-lg truncate mb-1" title={product.Name}>{product.Name}</h3>
+                  <p className="text-[#EF0303] font-semibold text-lg sm:text-xl">${parseFloat(product.price).toFixed(2)}</p>
+                  <div className="flex items-center mt-2">
+                    <span className="text-yellow-500 text-sm">{product.rating}</span>
+                    <span className="ml-2 text-gray-400 text-sm">({product.reviewsCount} customer reviews)</span>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -201,29 +223,47 @@ const Home = () => {
               View All
             </button>
           </div>
-          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 pt-12'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 pt-12 md:pt-24'>
             {newProducts.map((product) => (
-              <div
-                key={product.id}
-                className='flex flex-col items-center bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow'
-              >
-                <div  
-                key={product.id} 
-                onClick={()=>navigate(`/product/${product.id}`, {
-                  state: {product}
-                }
-
-                )}>
+              <div key={product.id} className="flex flex-col">
+                <div
                   
+                  className='relative aspect-square overflow-hidden rounded-t-lg bg-gray-100'
+                >
                   <img
+                  onClick={()=> navigate(`/product/${product.id}`,{
+                    state: {product},
+                  })}
                     src={product.image}
                     alt={product.Name}
-                    className='w-full h-48 object-contain mb-4 cursor-pointer'
+                    className='w-full h-full object-contain bg-[#E6EAF5] p-4 transition-transform duration-300 hover:scale-105'
                   />
-                  <h2 className='text-lg font-semibold mb-2 text-center'>
-                    {product.Name}
-                  </h2>
-                  <p className='text-red-500 font-bold'>${product.price}</p>
+                  <div className="absolute top-2 right-2 flex flex-col gap-2">
+                    <button 
+                      className="p-2 bg-white rounded-full shadow hover:shadow-md hover:bg-[#EF0303] hover:text-white transition-all duration-300 group"
+                      aria-label="Add to wishlist"
+                    >
+                      <FaHeart className="text-lg text-[#00278c] group-hover:text-white transition duration-300" />
+                    </button>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation(); // Prevent navigation
+                        addToCart(product);
+                      }}
+                      className="p-2 bg-white rounded-full shadow hover:shadow-md hover:bg-[#00278c] hover:text-white transition-all duration-300 group"
+                      aria-label="Add to cart"
+                    >
+                      <FaShoppingCart className="text-lg text-[#00278c] group-hover:text-white transition duration-300" />
+                    </button>
+                  </div>
+                </div>
+                <div className="p-4">
+                  <h3 className="font-bold text-base sm:text-lg truncate mb-1" title={product.Name}>{product.Name}</h3>
+                  <p className="text-[#EF0303] font-semibold text-lg sm:text-xl">${parseFloat(product.price).toFixed(2)}</p>
+                  <div className="flex items-center mt-2">
+                    <span className="text-yellow-500 text-sm">{product.rating}</span>
+                    <span className="ml-2 text-gray-400 text-sm">({product.reviewsCount} customer reviews)</span>
+                  </div>
                 </div>
               </div>
             ))}
@@ -276,8 +316,8 @@ const Home = () => {
               <img
                 src={rightTopBanner}
                 alt='right-top-banner'
-                onClick={()=>navigate(`/product/${product.id}`,{
-                  state: {product}
+                onClick={()=>navigate(`/product/${products.id}`,{
+                  state: {products}
                 }
 
                 )}
@@ -304,8 +344,8 @@ const Home = () => {
               <img
                 src={rightBottomBanner}
                 alt='right-bottom-banner'
-                onClick={()=>navigate(`/product/${product.id}`,{
-                  state: {product}
+                onClick={()=>navigate(`/product/${products.id}`,{
+                  state: {products}
                 }
 
                 )}
@@ -416,19 +456,48 @@ const Home = () => {
               </Link>
             </div>
           </div>
-          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 pt-24 mx-auto w-[100%] px-14'>
+          <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 pt-12 md:pt-24'>
             {displayProducts.map((product) => (
-              <div
-                key={product.id}
-                className='flex flex-col items-center bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow'
-              >
-                <img
-                  src={product.image}
-                  alt={product.Name}
-                  className='w-full h-48 object-contain mb-4'
-                />
-                <h2 className='text-lg font-semibold mb-2'>{product.Name}</h2>
-                <p className='text-[#EF0303] font-bold'>${product.price}</p>
+              <div key={product.id} className="flex flex-col">
+                <div
+                  
+                  className='relative aspect-square overflow-hidden rounded-t-lg bg-gray-100'
+                >
+                  <img
+                  onClick={()=> navigate(`/product/${product.id}`,{
+                    state: {product},
+                  })}
+                    src={product.image}
+                    alt={product.Name}
+                    className='w-full h-full object-contain bg-[#E6EAF5] p-4 transition-transform duration-300 hover:scale-105'
+                  />
+                  <div className="absolute top-2 right-2 flex flex-col gap-2">
+                    <button 
+                      className="p-2 bg-white rounded-full shadow hover:shadow-md hover:bg-[#EF0303] hover:text-white transition-all duration-300 group"
+                      aria-label="Add to wishlist"
+                    >
+                      <FaHeart className="text-lg text-[#00278c] group-hover:text-white transition duration-300" />
+                    </button>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation(); // Prevent navigation
+                        addToCart(product);
+                      }}
+                      className="p-2 bg-white rounded-full shadow hover:shadow-md hover:bg-[#00278c] hover:text-white transition-all duration-300 group"
+                      aria-label="Add to cart"
+                    >
+                      <FaShoppingCart className="text-lg text-[#00278c] group-hover:text-white transition duration-300" />
+                    </button>
+                  </div>
+                </div>
+                <div className="p-4">
+                  <h3 className="font-bold text-base sm:text-lg truncate mb-1" title={product.Name}>{product.Name}</h3>
+                  <p className="text-[#EF0303] font-semibold text-lg sm:text-xl">${parseFloat(product.price).toFixed(2)}</p>
+                  <div className="flex items-center mt-2">
+                    <span className="text-yellow-500 text-sm">{product.rating}</span>
+                    <span className="ml-2 text-gray-400 text-sm">({product.reviewsCount} customer reviews)</span>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
