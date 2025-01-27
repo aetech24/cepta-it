@@ -1,34 +1,3 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import heroBanner from '../assets/iphone 2.png';
-import { SlScreenSmartphone } from 'react-icons/sl';
-import { HiOutlineComputerDesktop } from 'react-icons/hi2';
-import { BsSmartwatch } from 'react-icons/bs';
-import { AiOutlineCamera } from 'react-icons/ai';
-import { CiHeadphones } from 'react-icons/ci';
-import { LuGamepad } from 'react-icons/lu';
-// import ProductGrid from '../components/ProductGrid';
-import products from '../constants/products';
-import leftBanner from '../assets/ps5-banner.png';
-import rightTopBanner from '../assets/laptop-banner.png';
-import rightBottomBanner from '../assets/jbl-banner.png';
-import { FaHeart, FaShoppingCart } from 'react-icons/fa';
-import { useCart } from '../context/CartContext';
-import {
-  PiTruck,
-  PiHandCoinsThin,
-  PiHeadset,
-  PiShieldCheck,
-} from 'react-icons/pi';
-
-const trendingProducts = products.filter(
-  (product) => product.type === 'trending'
-);
-const newProducts = products.filter((product) => product.type === 'new');
-// const featuredProducts = products.filter((product) => product.type === 'featured');
-// const topProducts = products.filter((product) => product.type === 'top');
-// const topSellingProducts = products.filter((product) => product.type === 'top-selling');
-
 const Home = () => {
   const navigate = useNavigate();
   const [category, setCategory] = useState('featured');
