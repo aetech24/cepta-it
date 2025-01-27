@@ -33,6 +33,7 @@ const WishlistProvider = ({ children }) => {
   const addToWishlist = (product) => {
     if (!wishlist.find(item => item.id === product.id)) {
       setWishlist([...wishlist, product]);
+      alert(`${product.Name?.trim() || "Unnamed Item"} added to wishlist!`);
     }
   };
 

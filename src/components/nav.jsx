@@ -284,9 +284,9 @@ const Nav = () => {
                     className='relative text-2xl text-gray-600 hover:text-[#00278C] transition-colors duration-300'
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <AiOutlineHeart />
+                    <AiOutlineHeart className='text-3xl' />
                     {wishlistCount > 0 && (
-                      <span className="absolute -top-2 -right-2 bg-[#EF0303] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                      <span className='absolute -top-2 -right-2 bg-[#EF0303] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center'>
                         {wishlistCount}
                       </span>
                     )}
@@ -299,8 +299,8 @@ const Nav = () => {
                     <>
                       {cartCount > 0 && (
                         <div className='relative'>
-                          <AiOutlineShoppingCart aria-label='Shopping cart' />
-                            <span className='absolute bg-[#EF0303] text-white text-xs font-bold rounded-full px-2 h-[15px] w-[15px] flex items-center justify-center top-[-5px] right-[-5px]'>
+                          <AiOutlineShoppingCart aria-label='Shopping cart' className='text-3xl' />
+                            <span className='absolute -top-2 -right-2 bg-[#EF0303] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center'>
                             {cartCount}
                           </span>
                         </div>
@@ -316,7 +316,7 @@ const Nav = () => {
                         className='text-[#232323] hover:text-[#00278C] text-2xl transition-all duration-300'
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
-                        <AiOutlineUser aria-label='Sign in' />
+                        <AiOutlineUser aria-label='Sign in' className='text-3xl' />
                       </button>
                     </SignInButton>
                   </SignedOut>
