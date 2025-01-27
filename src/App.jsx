@@ -15,6 +15,7 @@ import { ClerkProvider } from '@clerk/clerk-react'
 import MobileViewIconsBottom from './components/MobileViewIconsBottom'
 import ScrollToTop from './components/ScrollToTop'
 import SingleProduct from './pages/SingleProduct'
+import Wishlist from './pages/Wishlist'
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
@@ -39,6 +40,7 @@ function App() {
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/search" element={<Search />} />
                 <Route path="/product/:id" element={<SingleProduct />} />
+                <Route path="/wishlist" element={<Wishlist />} />
               </Routes>
             </Layout>
             <Footer />

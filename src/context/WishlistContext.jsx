@@ -1,10 +1,34 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-export const WishlistContext = createContext();
+const WishlistContext = createContext();
 
-export const WishlistProvider = ({ children }) => {
-  const [wishlist, setWishlist] = useState([]);
+export const useWishlist = () => {
+  const context = useContext(WishlistContext);
+  if (!context) {
+    throw new Error('useWishlist must be used within a WishlistProvider');
+  }
+  return context;
+};
+
+const WishlistProvider = ({ children }) => {
+  const [wishlist, setWishlist] = useState(() => {
+    try {
+      const localData = localStorage.getItem('wishlist');
+      return localData ? JSON.parse(localData) : [];
+    } catch (error) {
+      console.error('Error reading from localStorage:', error);
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('wishlist', JSON.stringify(wishlist));
+    } catch (error) {
+      console.error('Error saving to localStorage:', error);
+    }
+  }, [wishlist]);
 
   const addToWishlist = (product) => {
     if (!wishlist.find(item => item.id === product.id)) {
@@ -16,8 +40,16 @@ export const WishlistProvider = ({ children }) => {
     setWishlist(wishlist.filter(item => item.id !== productId));
   };
 
+  const wishlistCount = wishlist.length;
+
   return (
-    <WishlistContext.Provider value={{ wishlist, addToWishlist, removeFromWishlist }}>
+    <WishlistContext.Provider value={{ 
+      wishlist, 
+      setWishlist, 
+      addToWishlist, 
+      removeFromWishlist,
+      wishlistCount 
+    }}>
       {children}
     </WishlistContext.Provider>
   );
@@ -27,4 +59,4 @@ WishlistProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default WishlistProvider; 
+export { WishlistContext, WishlistProvider as default };

@@ -18,6 +18,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import products from '../constants/products';
 import { useCart } from '../context/CartContext';
+import { useWishlist } from '../context/WishlistContext';
 
 const Nav = () => {
   const navigate = useNavigate();
@@ -26,11 +27,10 @@ const Nav = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { cart } = useCart();
+  const { wishlistCount } = useWishlist();
 
   const [cartCount, setCartCount] = useState(0);
-  useEffect(() => {
-    setCartCount(cart.length);
-  }, [cart]);
+  
   useEffect(() => {
     setCartCount(cart.length);
   }, [cart]);
@@ -184,24 +184,25 @@ const Nav = () => {
               <div className='flex items-center space-x-4'>
                 <Link
                   to='/wishlist'
-                  className='text-[#232323] hover:text-[#00278C] text-2xl transition-all duration-300'
+                  className='relative text-2xl text-gray-600 hover:text-[#00278C] transition-colors duration-300'
                 >
-                  <AiOutlineHeart aria-label='Wishlist' />
+                  <AiOutlineHeart />
+                  {wishlistCount > 0 && (
+                    <span className="absolute -top-2 -right-2 bg-[#EF0303] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                      {wishlistCount}
+                    </span>
+                  )}
                 </Link>
                 <Link
                   to='/cart'
-                  className='text-[#232323] hover:text-[#00278C] text-2xl transition-all duration-300'
+                  className='relative text-2xl text-gray-600 hover:text-[#00278C] transition-colors duration-300'
                 >
-                  <>
-                    {cartCount > 0 && (
-                      <div className='relative flex items-center'>
-                        <AiOutlineShoppingCart aria-label='Shopping cart' />
-                        <span className='absolute bg-[#EF0303] text-white text-xs font-bold rounded-full px-2 h-[15px] w-[15px] flex items-center justify-center top-[-5px] right-[-5px]'>
-                          {cartCount}
-                        </span>
-                      </div>
-                    )}
-                  </>
+                  <AiOutlineShoppingCart />
+                  {cartCount > 0 && (
+                    <span className="absolute -top-2 -right-2 bg-[#EF0303] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                      {cartCount}
+                    </span>
+                  )}
                 </Link>
                 <SignedIn>
                   <UserButton />
@@ -280,14 +281,19 @@ const Nav = () => {
                 <div className='flex justify-center space-x-6 pt-4 border-t'>
                   <Link
                     to='/wishlist'
-                    className='text-[#232323] hover:text-[#00278C] text-2xl transition-all duration-300'
+                    className='relative text-2xl text-gray-600 hover:text-[#00278C] transition-colors duration-300'
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <AiOutlineHeart aria-label='Wishlist' />
+                    <AiOutlineHeart />
+                    {wishlistCount > 0 && (
+                      <span className="absolute -top-2 -right-2 bg-[#EF0303] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                        {wishlistCount}
+                      </span>
+                    )}
                   </Link>
                   <Link
                     to='/cart'
-                    className='text-[#232323] hover:text-[#00278C] text-2xl transition-all duration-300'
+                    className='relative text-2xl text-gray-600 hover:text-[#00278C] transition-colors duration-300'
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <>

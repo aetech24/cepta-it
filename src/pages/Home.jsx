@@ -1,3 +1,31 @@
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import heroBanner from '../assets/iphone 2.png';
+import { SlScreenSmartphone } from 'react-icons/sl';
+import { HiOutlineComputerDesktop } from 'react-icons/hi2';
+import { BsSmartwatch } from 'react-icons/bs';
+import { AiOutlineCamera } from 'react-icons/ai';
+import { CiHeadphones } from 'react-icons/ci';
+import { LuGamepad } from 'react-icons/lu';
+import products from '../constants/products';
+import leftBanner from '../assets/ps5-banner.png';
+import rightTopBanner from '../assets/laptop-banner.png';
+import rightBottomBanner from '../assets/jbl-banner.png';
+import { FaHeart, FaShoppingCart } from 'react-icons/fa';
+import { useCart } from '../context/CartContext';
+import {
+  PiTruck,
+  PiHandCoinsThin,
+  PiHeadset,
+  PiShieldCheck,
+} from 'react-icons/pi';
+import { useWishlist } from '../context/WishlistContext';
+
+const trendingProducts = products.filter(
+  (product) => product.type === 'trending'
+);
+const newProducts = products.filter((product) => product.type === 'new');
+
 const Home = () => {
   const navigate = useNavigate();
   const [category, setCategory] = useState('featured');
@@ -5,7 +33,19 @@ const Home = () => {
     (product) => product.type === category
   );
   const { addToCart } = useCart();
+  const { addToWishlist, removeFromWishlist, wishlist } = useWishlist();
 
+  const isInWishlist = (productId) => {
+    return wishlist.some(item => item.id === productId);
+  };
+
+  const handleWishlistToggle = (product) => {
+    if (isInWishlist(product.id)) {
+      removeFromWishlist(product.id);
+    } else {
+      addToWishlist(product);
+    }
+  };
 
   return (
     <main className='min-h-screen py-8 w-full mx-auto'>
@@ -57,28 +97,34 @@ const Home = () => {
           <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 pt-12 md:pt-24'>
             {trendingProducts.map((product) => (
               <div key={product.id} className="flex flex-col">
-                <div
-                  
-                  className='relative aspect-square overflow-hidden rounded-t-lg bg-gray-100'
-                >
+                <div className='relative aspect-square overflow-hidden rounded-t-lg bg-gray-100'>
                   <img
-                  onClick={()=> navigate(`/product/${product.id}`,{
-                    state: {product},
-                  })}
+                    onClick={() => navigate(`/product/${product.id}`, {
+                      state: { product },
+                    })}
                     src={product.image}
                     alt={product.Name}
                     className='w-full h-full object-contain bg-[#E6EAF5] p-4 transition-transform duration-300 hover:scale-105'
                   />
                   <div className="absolute top-2 right-2 flex flex-col gap-2">
-                    <button 
-                      className="p-2 bg-white rounded-full shadow hover:shadow-md hover:bg-[#EF0303] hover:text-white transition-all duration-300 group"
-                      aria-label="Add to wishlist"
+                    <button
+                      className={`p-2 rounded-full shadow hover:shadow-md transition-all duration-300 group ${
+                        isInWishlist(product.id)
+                          ? "bg-[#EF0303] text-white"
+                          : "bg-white hover:bg-[#EF0303] hover:text-white"
+                      }`}
+                      aria-label={isInWishlist(product.id) ? "Remove from wishlist" : "Add to wishlist"}
+                      onClick={() => handleWishlistToggle(product)}
                     >
-                      <FaHeart className="text-lg text-[#00278c] group-hover:text-white transition duration-300" />
+                      <FaHeart className={`text-lg ${
+                        isInWishlist(product.id)
+                          ? "text-white"
+                          : "text-[#00278c] group-hover:text-white"
+                      } transition duration-300`} />
                     </button>
                     <button
                       onClick={(e) => {
-                        e.stopPropagation(); // Prevent navigation
+                        e.stopPropagation();
                         addToCart(product);
                       }}
                       className="p-2 bg-white rounded-full shadow hover:shadow-md hover:bg-[#00278c] hover:text-white transition-all duration-300 group"
@@ -139,9 +185,7 @@ const Home = () => {
                 name: 'Smartphones',
               },
               {
-                icon: (
-                  <HiOutlineComputerDesktop className='w-[56px] h-[56px]' />
-                ),
+                icon: <HiOutlineComputerDesktop className='w-[56px] h-[56px]' />,
                 name: 'Computers',
               },
               {
@@ -195,28 +239,34 @@ const Home = () => {
           <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 pt-12 md:pt-24'>
             {newProducts.map((product) => (
               <div key={product.id} className="flex flex-col">
-                <div
-                  
-                  className='relative aspect-square overflow-hidden rounded-t-lg bg-gray-100'
-                >
+                <div className='relative aspect-square overflow-hidden rounded-t-lg bg-gray-100'>
                   <img
-                  onClick={()=> navigate(`/product/${product.id}`,{
-                    state: {product},
-                  })}
+                    onClick={() => navigate(`/product/${product.id}`, {
+                      state: { product },
+                    })}
                     src={product.image}
                     alt={product.Name}
                     className='w-full h-full object-contain bg-[#E6EAF5] p-4 transition-transform duration-300 hover:scale-105'
                   />
                   <div className="absolute top-2 right-2 flex flex-col gap-2">
-                    <button 
-                      className="p-2 bg-white rounded-full shadow hover:shadow-md hover:bg-[#EF0303] hover:text-white transition-all duration-300 group"
-                      aria-label="Add to wishlist"
+                    <button
+                      className={`p-2 rounded-full shadow hover:shadow-md transition-all duration-300 group ${
+                        isInWishlist(product.id)
+                          ? "bg-[#EF0303] text-white"
+                          : "bg-white hover:bg-[#EF0303] hover:text-white"
+                      }`}
+                      aria-label={isInWishlist(product.id) ? "Remove from wishlist" : "Add to wishlist"}
+                      onClick={() => handleWishlistToggle(product)}
                     >
-                      <FaHeart className="text-lg text-[#00278c] group-hover:text-white transition duration-300" />
+                      <FaHeart className={`text-lg ${
+                        isInWishlist(product.id)
+                          ? "text-white"
+                          : "text-[#00278c] group-hover:text-white"
+                      } transition duration-300`} />
                     </button>
                     <button
                       onClick={(e) => {
-                        e.stopPropagation(); // Prevent navigation
+                        e.stopPropagation();
                         addToCart(product);
                       }}
                       className="p-2 bg-white rounded-full shadow hover:shadow-md hover:bg-[#00278c] hover:text-white transition-all duration-300 group"
@@ -285,11 +335,6 @@ const Home = () => {
               <img
                 src={rightTopBanner}
                 alt='right-top-banner'
-                onClick={()=>navigate(`/product/${products.id}`,{
-                  state: {products}
-                }
-
-                )}
                 className='w-[150px] top-5 max-w-[300px] md:max-w-none h-auto mx-auto absolute right-0 md:w-[200px]'
               />
             </div>
@@ -313,11 +358,6 @@ const Home = () => {
               <img
                 src={rightBottomBanner}
                 alt='right-bottom-banner'
-                onClick={()=>navigate(`/product/${products.id}`,{
-                  state: {products}
-                }
-
-                )}
                 className='w-[170px] top-12 max-w-[300px] cursor-pointer md:max-w-none h-auto mx-auto absolute bottom-2 right-0 md:w-[250px]'
               />
             </div>
@@ -383,7 +423,7 @@ const Home = () => {
               </Link>
               <Link
                 onClick={() => setCategory('top')}
-                className={` cursor-pointer text-gray-500 hover:text-black transition-all duration-300 group ${
+                className={`cursor-pointer text-gray-500 hover:text-black transition-all duration-300 group ${
                   category === 'top' ? 'text-black' : ''
                 }`}
               >
@@ -428,28 +468,34 @@ const Home = () => {
           <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 pt-12 md:pt-24'>
             {displayProducts.map((product) => (
               <div key={product.id} className="flex flex-col">
-                <div
-                  
-                  className='relative aspect-square overflow-hidden rounded-t-lg bg-gray-100'
-                >
+                <div className='relative aspect-square overflow-hidden rounded-t-lg bg-gray-100'>
                   <img
-                  onClick={()=> navigate(`/product/${product.id}`,{
-                    state: {product},
-                  })}
+                    onClick={() => navigate(`/product/${product.id}`, {
+                      state: { product },
+                    })}
                     src={product.image}
                     alt={product.Name}
                     className='w-full h-full object-contain bg-[#E6EAF5] p-4 transition-transform duration-300 hover:scale-105'
                   />
                   <div className="absolute top-2 right-2 flex flex-col gap-2">
-                    <button 
-                      className="p-2 bg-white rounded-full shadow hover:shadow-md hover:bg-[#EF0303] hover:text-white transition-all duration-300 group"
-                      aria-label="Add to wishlist"
+                    <button
+                      className={`p-2 rounded-full shadow hover:shadow-md transition-all duration-300 group ${
+                        isInWishlist(product.id)
+                          ? "bg-[#EF0303] text-white"
+                          : "bg-white hover:bg-[#EF0303] hover:text-white"
+                      }`}
+                      aria-label={isInWishlist(product.id) ? "Remove from wishlist" : "Add to wishlist"}
+                      onClick={() => handleWishlistToggle(product)}
                     >
-                      <FaHeart className="text-lg text-[#00278c] group-hover:text-white transition duration-300" />
+                      <FaHeart className={`text-lg ${
+                        isInWishlist(product.id)
+                          ? "text-white"
+                          : "text-[#00278c] group-hover:text-white"
+                      } transition duration-300`} />
                     </button>
                     <button
                       onClick={(e) => {
-                        e.stopPropagation(); // Prevent navigation
+                        e.stopPropagation();
                         addToCart(product);
                       }}
                       className="p-2 bg-white rounded-full shadow hover:shadow-md hover:bg-[#00278c] hover:text-white transition-all duration-300 group"

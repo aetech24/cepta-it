@@ -12,6 +12,7 @@ import ProductGrid from '../components/ProductGrid';
 import { useCart } from '../context/CartContext';
 import { useNavigate } from 'react-router-dom';
 
+
 const Shop = () => {
   const navigate = useNavigate();
   const [brandFilter, setBrandFilter] = useState('');
@@ -49,12 +50,12 @@ const Shop = () => {
   const totalPages = Math.ceil(filterProducts().length / itemsPerPage);
 
   // Navigate to the product details
-   const handleViewProduct = (product) => {
-     navigate(`/product/${product.id}`, {state: {product}});
-   };
+  const handleViewProduct = (product) => {
+    navigate(`/product/${product.id}`);
+  };
 
-   // Add to cart functionality
-   //const addToCart = (product) => {
+  // Add to cart functionality
+  //const addToCart = (product) => {
     //setCart((prevCart) => [...prevCart, product]);
     //alert(`${product.Name} has been added to the cart!`);
   //};
@@ -218,7 +219,10 @@ const Shop = () => {
 
           {/* Product Grid */}
           <div className='bg-white p-4 rounded-lg shadow-sm'>
-            <ProductGrid products={paginatedProducts} addToCart={addToCart} viewProduct={handleViewProduct}/>
+            <ProductGrid 
+              products={paginatedProducts} 
+              viewProduct={handleViewProduct}
+            />
           </div>
         </main>
       </div>
